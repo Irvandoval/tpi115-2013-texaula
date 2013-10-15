@@ -13,6 +13,7 @@
     <RootNamespace>SistemaHospital.Presentacion</RootNamespace>
     <AssemblyName>CapaPresentacion</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -126,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="imagenes\" />
     <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
