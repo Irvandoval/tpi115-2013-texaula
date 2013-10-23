@@ -11,11 +11,11 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        <strong>Acerca de nos
+        <strong>Acerca de nosotros&nbsp;&nbsp;
     </strong>
     </h2>
     <p class="style1">
-        <br />
+        somos los mas palomas<br />
         <br />
         <br />
         Aplicacion realizada para la materia de Técnicas de Programación para Internet&nbsp; 
