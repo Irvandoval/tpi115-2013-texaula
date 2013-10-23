@@ -11,8 +11,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        <strong>Acerca de
-        Nosotros
+        <strong>Acerca de nos
     </strong>
     </h2>
     <p class="style1">
