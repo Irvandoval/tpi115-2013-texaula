@@ -15,7 +15,7 @@
     </strong>
     </h2>
     <p class="style1">
-        somos los mas palomas<br />
+        <br />
         <br />
         <br />
         Aplicacion realizada para la materia de Técnicas de Programación para Internet&nbsp; 
