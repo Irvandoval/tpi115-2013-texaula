@@ -126,9 +126,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Administrador\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Doctor\" />
     <Folder Include="imagenes\" />
     <Folder Include="img\" />
+    <Folder Include="Recepcionista\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
