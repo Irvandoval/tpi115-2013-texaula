@@ -9,7 +9,6 @@ body
     margin: 0px;
     padding: 0px;
     color: #696969;
-    height: 304px;
 }
 
 a:link, a:visited
@@ -32,7 +31,6 @@ p
 {
     margin-bottom: 10px;
     line-height: 1.6em;
-    text-align: center;
 }
 
 
@@ -51,17 +49,15 @@ h1, h2, h3, h4, h5, h6
 
 h1
 {
-    font-size: xx-large;
+    font-size: 1.6em;
     padding-bottom: 0px;
     margin-bottom: 0px;
-    text-align: center;
 }
 
 h2
 {
-    font-size: xx-large;
-    font-weight: 700;
-    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
 h3
@@ -76,8 +72,7 @@ h4
 
 h5, h6
 {
-    font-size: medium;
-    text-align: center;
+    font-size: 1em;
 }
 
 /* this rule styles <h1> and <h2> tags that are the 
@@ -102,13 +97,10 @@ first child of the left and right table columns */
 .header
 {
     position: relative;
-    margin: 10px;
+    margin: 0px;
     padding: 0px;
     background: #4b6c9e;
     width: 100%;
-    top: -10px;
-    left: -10px;
-    height: 160px;
 }
 
 .header h1
@@ -154,20 +146,17 @@ div.hideSkiplink
 {
     background-color:#3a4f63;
     width:100%;
-    height: 37px;
-    
 }
 
 div.menu
 {
-    padding: 5px 0px 4px 5px;
-    left: 10px;
+    padding: 4px 0px 4px 8px;
 }
 
 div.menu ul
 {
     list-style: none;
-    margin-top: -20px;
+    margin: 0px;
     padding: 0px;
     width: auto;
 }
@@ -175,7 +164,7 @@ div.menu ul
 div.menu ul li a, div.menu ul li a:visited
 {
     background-color: #465c71;
-    border:  1px #4e667d solid;
+    border: 1px #4e667d solid;
     color: #dde4ec;
     display: block;
     line-height: 1.35em;
@@ -183,12 +172,6 @@ div.menu ul li a, div.menu ul li a:visited
     text-decoration: none;
     white-space: nowrap;
 }
-
-div.centra
-{
-    
-}
-
 
 div.menu ul li a:hover
 {
@@ -266,8 +249,7 @@ div.accountInfo
     display: block;
     float: left;
     text-align: left;
-    width: 344px;
-    margin-left: 16px;
+    width: auto;
 }
 
 .loginDisplay
@@ -286,7 +268,7 @@ div.accountInfo
 
 .loginDisplay a:visited
 {
-    color: gray;
+    color: white;
 }
 
 .loginDisplay a:hover
