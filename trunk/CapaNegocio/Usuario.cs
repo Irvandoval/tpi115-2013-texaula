@@ -12,13 +12,14 @@ namespace SistemaHospital.Negocio
     {
         private string username;
         private string pass;
-        private string tipoUsuario;
-        private string estado;
+        public string tipoUsuario;
+       
 
        public Usuario(string username,string pass)
         {
             this.username=username;
             this.pass = pass;
+          
            
         }
 
@@ -31,6 +32,26 @@ namespace SistemaHospital.Negocio
                        return true;
                    else return false;
             
+        }
+
+        public int agregaUsuario()
+        {
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res=nuevoDB.addUsuario(this.username,this.pass,this.tipoUsuario);
+            nuevoDB.cerrar();
+            return res;
+        }
+
+        /* metodo que cambie el estado de un usuario a BAJA
+           */
+        public void bloquear()
+        {
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.editEstadoUsuario("BAJA");
+            nuevoDB.cerrar();
+
         }
 
        
