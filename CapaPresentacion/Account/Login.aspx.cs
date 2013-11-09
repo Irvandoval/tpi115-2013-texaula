@@ -36,7 +36,8 @@ namespace CapaPresentacion.Account
                 intentos++;
                 Response.Write(intentos);
                 if (intentos == MaxError) {
-                   /*ACA SE DEBE IMPLEMENTAR UN BLOQUEO DE ESTADO PARA EL USER QUE SE ESTA METIENDO*/
+                   /*ACA SE DEBE IMPLEMENTAR UN BLOQUEO  PARA EL USER QUE YA HIZO EL MAXIMO DE INTENTOS y MOSTRAR UN MENSAJE*/
+                    nuevo.bloquear();
                 }
 
             }
