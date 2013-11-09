@@ -44,6 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consulta.cs" />
+    <Compile Include="Diagnostico.cs" />
+    <Compile Include="Enfermera.cs" />
+    <Compile Include="Examen.cs" />
+    <Compile Include="Expediente.cs" />
+    <Compile Include="Medico.cs" />
+    <Compile Include="Paciente.cs" />
+    <Compile Include="Recepcionista.cs" />
+    <Compile Include="Tratamiento.cs" />
+    <Compile Include="Urgencia.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
