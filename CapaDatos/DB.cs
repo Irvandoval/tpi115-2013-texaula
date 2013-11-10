@@ -10,8 +10,10 @@ namespace SistemaHospital.Datos
     {
        MySqlConnection conexion = new MySqlConnection("data source=localhost;user=root;password=;database=sistemahospital");
        public string estadoConexion;
-     
-       
+       public DB()
+       {
+           this.conectar();
+       }
 
        /*metodo para conectarse a la base de datos*/
        public int conectar()
@@ -44,11 +46,16 @@ namespace SistemaHospital.Datos
            cmd.Parameters.Add("@pass", MySqlDbType.VarChar, 10).Value = contra;
            cmd.Parameters.Add("@username", MySqlDbType.VarChar, 10).Value = user;
            MySqlDataReader res = cmd.ExecuteReader();
+         
            if (res.Read())
            {
                return res.GetInt32(0);
+              
            }
-           else return 0;
+           
+           
+           return 0;
+          
        }
 
 
@@ -63,11 +70,17 @@ namespace SistemaHospital.Datos
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@user", MySqlDbType.VarChar, 10).Value = user;
            MySqlDataReader res = cmd.ExecuteReader();
+           int val=0;
+         
            if (res.Read())
            {
-               return res.GetInt32(0);
+               
+              val =res.GetInt32(0);
+              res.Close();
            }
-           else return 0;
+
+         
+           return val;
        }
 
        public int addUsuario(string user, string contra, string tipo)
@@ -87,6 +100,7 @@ namespace SistemaHospital.Datos
        }
 
 
+        
        public int eliminaUsuario(string user)
        {
            int iduser = getIdUsuario(user);
@@ -102,7 +116,33 @@ namespace SistemaHospital.Datos
            else return 0;
        }
 
+       public int regisLogin(string user)
+       {
+           int iduser = getIdUsuario(user);
+           string sql = "CALL SPRegUserLogs(@iduser,1)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@iduser", MySqlDbType.Int32).Value = iduser;
+           MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+           else return 0;
 
+       }
+
+       public int regisLogout()
+       {
+           string sql = "CALL SPRegUserLogs(null,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+           else return 0;
+
+       }
 
        public void listaUsuarios()
        {
@@ -249,11 +289,16 @@ namespace SistemaHospital.Datos
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = iud;
            MySqlDataReader res = cmd.ExecuteReader();
-           if (res.Read())
+           int val=0;
+          if (res.Read())
+
            {
-               return res.GetInt32(0);
+              val=res.GetInt32(0);
+              
            }
-           return 0;
+
+          res.Close();
+           return val;
 
       }
       
@@ -272,7 +317,7 @@ namespace SistemaHospital.Datos
            return 0;
        }
        
-/*----------------------------------------Metodos que gestionan Tratamientos----------------------------------------------------------*/
+/*----------------------------------------Metodos que gestionan Tratamientos---------*/
 
        public int addTratamiento(string nombre)
        {
@@ -294,11 +339,13 @@ namespace SistemaHospital.Datos
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@nombre", MySqlDbType.VarChar, 10).Value = name;
            MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
            if (res.Read())
            {
-               return res.GetInt32(0);
+               val= res.GetInt32(0);
            }
-           return 0;
+           res.Close();
+           return val;
 
        }
 
@@ -316,7 +363,29 @@ namespace SistemaHospital.Datos
            }
            return 0;
        }
-/*--------------------------------------------------------------------------------------------------*/
+/*------------------------------Metodos que gestionan consultas---------------------*/
+       public int addConsulta(int idExpediente,string duiMedico, string motivo)
+       {//supondremos que la fecha de la consulta es hoy!!
+
+
+           return 0;
+       }
+
+       public int eliminaConsulta(int idConsulta)
+       {
+           return 0;
+       }
+/*----------------------------------Metodos que gestionan Paciente--------------------*/
+       public int addPaciente(string nombres, string apellidos, string dui, string telefono,
+       string fechaNac, string seguro, string sexo, string estado)
+       {
+           return 0;
+       }
+       public int eliminaPaciente(string dui)
+       {
+           return 0;
+       }
+/*------------------------------------------------------------------------------------*/
 
     }
 }

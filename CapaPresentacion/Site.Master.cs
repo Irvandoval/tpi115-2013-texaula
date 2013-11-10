@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SistemaHospital.Negocio;
+
 
 namespace CapaPresentacion
 {
@@ -17,6 +19,12 @@ namespace CapaPresentacion
         protected void HeadLoginView_ViewChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void HeadLoginStatus_LoggingOut(object sender, LoginCancelEventArgs e)
+        {
+            Usuario.registrarLogout();
+            
         }
     }
 }
