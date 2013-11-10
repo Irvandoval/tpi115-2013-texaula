@@ -27,7 +27,7 @@ namespace CapaPresentacion.Account
 
             if (autentifica)
             {
-
+                nuevo.registrarLogin();
                 Response.Write(HttpContext.Current.User.Identity.Name);
 
             }

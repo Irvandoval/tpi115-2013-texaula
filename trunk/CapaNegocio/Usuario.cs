@@ -34,6 +34,8 @@ namespace SistemaHospital.Negocio
             
         }
 
+       
+        
         public int agregaUsuario()
         {
             DB nuevoDB = new DB();
@@ -52,6 +54,24 @@ namespace SistemaHospital.Negocio
             int res = nuevoDB.editEstadoUsuario("BAJA");
             nuevoDB.cerrar();
 
+        }
+
+        public  int registrarLogin(){
+
+            DB nuevoDB= new DB();
+            nuevoDB.conectar();
+            int res= nuevoDB.regisLogin(this.username);
+            nuevoDB.cerrar();
+            return res;
+        }
+
+        public static int registrarLogout()
+        {
+            DB nuevo = new DB();
+            nuevo.conectar();
+           int res= nuevo.regisLogout();
+           nuevo.cerrar();
+           return res;
         }
 
        
