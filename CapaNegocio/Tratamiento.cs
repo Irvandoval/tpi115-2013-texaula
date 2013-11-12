@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SistemaHospital.Datos;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace SistemaHospital.Negocio
 {
@@ -13,9 +14,9 @@ namespace SistemaHospital.Negocio
         private string nombre;
 
 
-        public Tratamiento(int idTratamiento, string nombre)
+        public Tratamiento(string nombre)
         {
-            this.idTratamiento = idTratamiento;
+            //this.idTratamiento = idTratamiento;
             this.nombre = nombre;
         }
 
@@ -45,6 +46,14 @@ namespace SistemaHospital.Negocio
             int res = nuevoDB.eliminaTratamiento(this.nombre);
             nuevoDB.cerrar();
             return res;
+        }
+
+        public static DataTable obtenerListaTratamientos()
+        {
+            DB nuevo = new DB();
+            nuevo.conectar();
+            DataTable tabTratamientos = nuevo.listaTratamientos();
+            return tabTratamientos;
         }
 
         public int actualizarTratamiento()
