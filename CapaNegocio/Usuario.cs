@@ -80,6 +80,7 @@ namespace SistemaHospital.Negocio
             DB nuevo = new DB();
             nuevo.conectar();
             DataTable tabUsuarios = nuevo.listaUsuarios();
+            nuevo.cerrar();
             return tabUsuarios;
         }
        
