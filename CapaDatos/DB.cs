@@ -202,10 +202,24 @@ namespace SistemaHospital.Datos
            return 0;
        }
 
-       public void listaMedicos()
+       public DataTable listaMedicos()
        {
-           string sql = "SELECT * from Medicos";
-          
+           DataTable tmed = new DataTable("Medicos");
+           if (String.Equals(this.estadoConexion, "Open"))
+           {
+
+               String sql = "SELECT * from medicos";
+               MySqlCommand cmd = new MySqlCommand(sql, conexion);
+               MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+               returnVal.Fill(tmed);
+
+           }
+           else
+           {
+               this.cerrar();
+
+           }
+           return tmed;
        }
 
 
@@ -241,8 +255,44 @@ namespace SistemaHospital.Datos
            return 0;
        }
 
-       public void listaRecepcionistas()
+       public DataTable listaRecepcionistas()
        {
+           DataTable trep = new DataTable("Recepcionistas");
+           if (String.Equals(this.estadoConexion, "Open"))
+           {
+
+               String sql = "SELECT * from recepcionistas";
+               MySqlCommand cmd = new MySqlCommand(sql, conexion);
+               MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+               returnVal.Fill(trep);
+
+           }
+           else
+           {
+               this.cerrar();
+
+           }
+           return trep;
+       }
+
+
+       /*------------------------------------------------------Metodos que gestionan a los Recepcionistas-------------------------------------*/
+       public int addRecepcionista(string dui, int idUser, string nombres, string apellidos, string fechaNacimiento)
+       {
+           string sql = "CALL SPRecepcionistas(@dui,@idUsuario,@nombres,@apellidos,@fechanacimiento,1)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
+           cmd.Parameters.Add("@iduser", MySqlDbType.Int32).Value = idUser;
+           cmd.Parameters.Add("@nombres", MySqlDbType.VarChar, 45).Value = nombres;
+           cmd.Parameters.Add("@apellidos", MySqlDbType.VarChar, 45).Value = apellidos;
+           cmd.Parameters.Add("@fechaNacimiento", MySqlDbType.Date).Value = fechaNacimiento;
+           MySqlDataReader res = cmd.ExecuteReader();
+
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+           return 0;
        }
        
 
@@ -278,10 +328,45 @@ namespace SistemaHospital.Datos
            return 0;
        }
 
-       public void listaEnfermera(){
-           //not implemented yet xD
+       public DataTable listaEnfermera(){
+           DataTable tenf = new DataTable("Enfermeras");
+           if (String.Equals(this.estadoConexion, "Open"))
+           {
+
+               String sql = "SELECT * from enfermeras";
+               MySqlCommand cmd = new MySqlCommand(sql, conexion);
+               MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+               returnVal.Fill(tenf);
+
+           }
+           else
+           {
+               this.cerrar();
+
+           }
+           return tenf;
        }
 
+
+       /*------------------------------------------------------Metodos que gestionan a los Recepcionistas-------------------------------------*/
+     /*  public int addRecepcionista(string dui, int idUser, string nombres, string apellidos, string fechaNacimiento)
+       {
+           string sql = "CALL SPRecepcionistas(@dui,@idUsuario,@nombres,@apellidos,@fechanacimiento,1)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
+           cmd.Parameters.Add("@iduser", MySqlDbType.Int32).Value = idUser;
+           cmd.Parameters.Add("@nombres", MySqlDbType.VarChar, 45).Value = nombres;
+           cmd.Parameters.Add("@apellidos", MySqlDbType.VarChar, 45).Value = apellidos;
+           cmd.Parameters.Add("@fechaNacimiento", MySqlDbType.Date).Value = fechaNacimiento;
+           MySqlDataReader res = cmd.ExecuteReader();
+
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+           return 0;
+       }
+       */
 
  /*---------------------------------------Metodos que gestionan a los expedientes------------------*/
 
@@ -379,10 +464,39 @@ namespace SistemaHospital.Datos
            }
            return 0;
        }
+
+
+       public DataTable listaTratamientos()
+       {
+           DataTable ttrat = new DataTable("Tratamientos");
+           if (String.Equals(this.estadoConexion, "Open"))
+           {
+
+               String sql = "SELECT * from tratamientos";
+               MySqlCommand cmd = new MySqlCommand(sql, conexion);
+               MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+               returnVal.Fill(ttrat);
+
+           }
+           else
+           {
+               this.cerrar();
+
+           }
+           return ttrat;  
+       }
 /*------------------------------Metodos que gestionan consultas---------------------*/
        public int addConsulta(int idExpediente,string duiMedico, string motivo)
        {//supondremos que la fecha de la consulta es hoy!!
-
+           string sql = "CALL SPConsultas(null,@idexp,1)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           //cmd.Parameters.Add("@idTratamiento", MySqlDbType.Int32).Value = idTrat;
+           MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+          
 
            return 0;
        }
