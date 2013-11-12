@@ -10,19 +10,63 @@ namespace SistemaHospital.Negocio
 {
     public class Medico
     {
+        public Medico() { 
+        }
         private string dui;
+
+        public string Dui
+        {
+            get { return dui; }
+            set { dui = value; }
+        }
         private int idUsuario;
+
+        public int IdUsuario
+        {
+            get { return idUsuario; }
+            set { idUsuario = value; }
+        }
         private string nombres;
+
+        public string Nombres
+        {
+            get { return nombres; }
+            set { nombres = value; }
+        }
         private string apellidos;
+
+        public string Apellidos
+        {
+            get { return apellidos; }
+            set { apellidos = value; }
+        }
         private string fechaNac;
+
+        public string FechaNac
+        {
+            get { return fechaNac; }
+            set { fechaNac = value; }
+        }
         private string sexo;
+
+        public string Sexo
+        {
+            get { return sexo; }
+            set { sexo = value; }
+        }
         private string jvmp;
+
+        public string Jvmp
+        {
+            get { return jvmp; }
+            set { jvmp = value; }
+        }
 
         public int agregarMedico()
         {
             DB nuevoDB = new DB();
             nuevoDB.conectar();
-            int res = nuevoDB.addMedico(this.dui,this.idUsuario,this.nombres,this.apellidos,this.fechaNac,this.sexo,this.jvmp);
+            int res = nuevoDB.addMedico(this.Dui,this.IdUsuario,this.Nombres,this.Apellidos,this.FechaNac,this.Sexo,this.Jvmp);
             nuevoDB.cerrar();
             return res;
         }
@@ -31,7 +75,7 @@ namespace SistemaHospital.Negocio
         {
             DB nuevoDB = new DB();
             nuevoDB.conectar();
-            int res = nuevoDB.eliminaMedico(this.dui);
+            int res = nuevoDB.eliminaMedico(this.Dui);
             nuevoDB.cerrar();
             return res;
         }
@@ -50,6 +94,7 @@ namespace SistemaHospital.Negocio
             nuevoDB.cerrar();
             return tabMedicos;
         }
+
 
     }
 }
