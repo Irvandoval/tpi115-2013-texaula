@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Consulta.cs" />
     <Compile Include="Diagnostico.cs" />
+    <Compile Include="Encriptador.cs" />
     <Compile Include="Enfermera.cs" />
     <Compile Include="Examen.cs" />
     <Compile Include="Expediente.cs" />
