@@ -514,9 +514,11 @@ namespace SistemaHospital.Datos
 /*------------------------------Metodos que gestionan consultas---------------------*/
        public int addConsulta(int idExpediente,string duiMedico, string motivo)
        {//supondremos que la fecha de la consulta es hoy!!
-           string sql = "CALL SPConsultas(null,@idexp,1)";
+           string sql = "CALL SPConsultas(null,@idexp,@duimed,current_timestamp(),@motivo,1)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
-           //cmd.Parameters.Add("@idTratamiento", MySqlDbType.Int32).Value = idTrat;
+           cmd.Parameters.Add("@idexp", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@duimed",MySqlDbType.VarChar,10).Value=duiMedico;
+           cmd.Parameters.Add("@motivo", MySqlDbType.VarChar, 10).Value = motivo;
            MySqlDataReader res = cmd.ExecuteReader();
            if (res.Read())
            {
@@ -531,6 +533,8 @@ namespace SistemaHospital.Datos
        {
            return 0;
        }
+
+
 
 /*----------------------------------Metodos que gestionan Paciente--------------------*/
        public int addPaciente(string nombres, string apellidos, string dui, string telefono,
@@ -569,7 +573,33 @@ namespace SistemaHospital.Datos
        {
            return 0;
        }
-/*------------------------------------------------------------------------------------*/
+/*----------------------------------Gestion de Examenes--------------------------------------------------*/
+
+       public int addExamen(string nombre)
+       {
+           string sql = "CALL SPConsultas(null,@nombre,1)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@duimed", MySqlDbType.VarChar, 10).Value = duiMedico;
+
+       }
+
+       public int eliminaExamen(string idExamen)
+       {
+           return 0;
+            
+       }
+
+       public int modificaExamen(string idExamen, string nombre)
+       {
+           return 0;
+       }
+
+       public DataTable listadeExamenes()
+       {
+           DataTable texa = new DataTable("Examenes");
+           return texa;
+       }
+       /*-----------------------------------------------------------------------*/
 
     }
 }
