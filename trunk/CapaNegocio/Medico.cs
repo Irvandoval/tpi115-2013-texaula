@@ -19,22 +19,33 @@ namespace SistemaHospital.Negocio
 
         public int agregarMedico()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.addMedico(this.dui,this.idUsuario,this.nombres,this.apellidos,this.fechaNac,this.sexo,this.jvmp);
+            nuevoDB.cerrar();
+            return res;
         }
 
         public int eliminarMedico()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.eliminaMedico(this.dui);
+            nuevoDB.cerrar();
+            return res;
         }
 
         public int actualizarMedico()
         {
+            DB nuevoDB = new DB();
             return 0;
+           
         }
 
-        public int consultarMedico()
+        public int consultarMedico(string dui)
+
         {
-            return 0;
+     
         }
 
 
