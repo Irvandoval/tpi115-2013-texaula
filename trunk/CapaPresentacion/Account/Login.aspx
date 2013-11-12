@@ -9,13 +9,13 @@
     </h2>
     <p>
         Especifique su nombre de usuario y contraseña.
-        <asp:HyperLink ID="RegisterHyperLink" runat="server"  EnableViewState="false">Registrarse</asp:HyperLink> si no tiene una cuenta.
+        <asp:HyperLink ID="RegisterHyperLink" runat="server"  EnableViewState="false">Registrarse</asp:HyperLink> &nbspsi no tiene una cuenta.
     </p>
-
+   <center>
     <asp:Login ID="LoginUser" runat="server" EnableViewState="False"  OnAuthenticate="LoginUser_Authenticate"
     DestinationPageUrl="~/Default.aspx" FailureText="Error al iniciar Sesión ."
         BackColor="#F7F7DE" BorderColor="#CCCC99" BorderStyle="Solid" BorderWidth="1px" 
-        Font-Names="Verdana" Font-Size="10pt" >
+        Font-Names="Verdana" Font-Size="10pt"    >
 
 
         <LayoutTemplate>
@@ -55,4 +55,5 @@
         </LayoutTemplate>
         <TitleTextStyle BackColor="#6B696B" Font-Bold="True" ForeColor="#FFFFFF" />
     </asp:Login>
+    </center>
 </asp:Content>
