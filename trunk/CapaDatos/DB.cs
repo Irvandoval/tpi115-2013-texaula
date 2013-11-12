@@ -538,7 +538,7 @@ namespace SistemaHospital.Datos
 
 /*----------------------------------Metodos que gestionan Paciente--------------------*/
        public int addPaciente(string nombres, string apellidos, string dui, string telefono,
-       string fechaNac, string seguro, string sexo, string estado)
+       string fechaNac, string seguro, string sexo, string estado,string direccion)
        {
            return 0;
        }
