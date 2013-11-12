@@ -16,10 +16,14 @@ namespace SistemaHospital.Negocio
 
         public Tratamiento(string nombre)
         {
-            //this.idTratamiento = idTratamiento;
             this.nombre = nombre;
         }
 
+        public Tratamiento(string nombre, int idTratamiento)
+        {
+            this.idTratamiento = idTratamiento;
+            this.nombre = nombre;
+        }
 
         public int agregarTratamiento()
         {
@@ -56,9 +60,13 @@ namespace SistemaHospital.Negocio
             return tabTratamientos;
         }
 
-        public int actualizarTratamiento()
+        public int modificarTratamiento()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.modificaTratamiento(this.idTratamiento, this.nombre);
+            nuevoDB.cerrar();
+            return res;
         }
 
         public int consultarTratamiento()
