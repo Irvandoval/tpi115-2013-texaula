@@ -12,14 +12,39 @@ namespace SistemaHospital.Negocio
         private int idTratamiento;
         private string nombre;
 
+
+        public Tratamiento(int idTratamiento, string nombre)
+        {
+            this.idTratamiento = idTratamiento;
+            this.nombre = nombre;
+        }
+
+
         public int agregarTratamiento()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.addTratamiento(this.nombre);
+            nuevoDB.cerrar();
+            return res;
+        }
+
+        public int obteneridTratamiento()
+        {
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.getidTratamiento(this.nombre);
+            nuevoDB.cerrar();
+            return res;
         }
 
         public int eliminarTratamiento()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.eliminaTratamiento(this.nombre);
+            nuevoDB.cerrar();
+            return res;
         }
 
         public int actualizarTratamiento()

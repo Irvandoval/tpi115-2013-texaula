@@ -337,9 +337,9 @@ namespace SistemaHospital.Datos
 
        public int addTratamiento(string nombre)
        {
-           string sql = "CALL SPExpedientes(null,@nombre,1)";
+           string sql = "CALL SPTratamientos(null,@nombre,1)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
-           //cmd.Parameters.Add("@idTratamiento", MySqlDbType.Int32).Value = idTrat;
+           cmd.Parameters.Add("@nombre", MySqlDbType.VarChar, 45).Value = nombre;
            MySqlDataReader res = cmd.ExecuteReader();
            if (res.Read())
            {
@@ -369,7 +369,7 @@ namespace SistemaHospital.Datos
        public int eliminaTratamiento(string nombre)
        {
            int id=this.getidTratamiento(nombre);
-           string sql = "CALL SPExpedientes(@idTratamiento,null,3)";
+           string sql = "CALL SPTratamientos(@idTratamiento,null,3)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@idTratamiento", MySqlDbType.Int32).Value = id;
            MySqlDataReader res = cmd.ExecuteReader();
