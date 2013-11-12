@@ -621,7 +621,27 @@ namespace SistemaHospital.Datos
            return 0;
        }
 
-       /*-------------------------------------------------------------------------------------------*/
+       /*---------------------------------Gestion de Diagnosticos----------------------------------------------------------*/
+
+       public int addDiagnostico(string nombre,string tipo , string fase)
+       {
+           return 0;
+       }
+
+       public int eliminarDiagnostico(int idDiagnostico){
+           return 0;
+       }
+       public DataTable listaDiagnosticos(){
+           DataTable tdiag= new DataTable("Diagnosticos");
+           return tdiag;
+       }
+
+       public int modificaDiagnostico(int idDiagnostico,string nombre, string tipo, string fase)
+       {
+           return 0;
+       }
+
+       /*-----------------------------------------------------------------------------------------------------*/
 
     }
 }
