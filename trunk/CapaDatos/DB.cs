@@ -569,7 +569,7 @@ namespace SistemaHospital.Datos
        }
 
        public int ModificarPaciente(string nombres, string apellidos, string dui, string telefono,
-       string fechaNac, string seguro, string sexo, string estado)
+       string fechaNac, string seguro, string sexo, string estado,string direccion)
        {
            return 0;
        }
