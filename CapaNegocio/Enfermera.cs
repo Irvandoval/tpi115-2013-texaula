@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using SistemaHospital.Datos;
 using MySql.Data.MySqlClient;
+using System.Data;
+
 
 namespace SistemaHospital.Negocio
 {
@@ -14,14 +16,32 @@ namespace SistemaHospital.Negocio
         private string apellidos;
         private string fechaNac;
 
+
+        public Enfermera(string dui,string nombres, string apellidos, string fechaNac)
+        {
+            this.dui=dui;
+            this.nombres = nombres;
+            this.apellidos = apellidos;
+            this.fechaNac = fechaNac;
+
+          }
         public int agregarEnfermera()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int enf = nuevoDB.addEnfermera(this.dui, this.nombres, this.apellidos, this.fechaNac);
+            nuevoDB.cerrar();
+            return enf;
+         
         }
 
         public int eliminarEnfermera()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int enf = nuevoDB.eliminaEnfermera(this.dui);
+            nuevoDB.cerrar();
+            return enf;
         }
 
         public int actualizarEnfermera()
@@ -34,6 +54,14 @@ namespace SistemaHospital.Negocio
             return 0;
         }
 
+        public static DataTable listaEnfermera()
+        {
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            DataTable tabEnfermera = nuevoDB.listaMedicos();
+            nuevoDB.cerrar();
+            return tabEnfermera;
+        }
 
     }
 }

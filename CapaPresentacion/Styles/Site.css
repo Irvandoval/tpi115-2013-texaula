@@ -246,6 +246,7 @@ input.passwordEntry
 {
     width: 320px;
     border: 1px solid #ccc;
+   
 }
 
 div.accountInfo
@@ -310,3 +311,20 @@ div.accountInfo
     text-align: right;
     padding-right: 10px;
 }
+
+#centro
+{  padding: 0px 12px;
+   width:70%;
+    margin: 12px 8px 8px 8px;
+    min-height: 420px;
+    }
+    
+#barraizq
+{
+    background-color:Blue;
+     padding: 0px 12px;
+     width:20%;
+    margin: 12px 8px 8px 8px;
+    min-height: 420px;
+             
+    }
