@@ -599,7 +599,29 @@ namespace SistemaHospital.Datos
            DataTable texa = new DataTable("Examenes");
            return texa;
        }
-       /*-----------------------------------------------------------------------*/
+    /*-------------------------- Gestion de Urgencia---------------------------------------------*/
+
+       public int agregarUrgencia(int idExpediente,string medicoDui,string enfermeraDui,string fechaEmergencia)
+       {
+           return 0;
+       }
+
+       public int eliminaUrgencia(int idUrgencia)
+       {
+           return 0;
+       }
+
+       public DataTable listaUrgencias(int idExpediente)
+       {
+           DataTable tur = new DataTable("urg");
+           return tur;
+       }
+
+       public int modificaUrgencia(int idUrgencia,int idExpediente,string medicoDui,string enfermeraDui,string fechaEmergencia){
+           return 0;
+       }
+
+       /*-------------------------------------------------------------------------------------------*/
 
     }
 }
