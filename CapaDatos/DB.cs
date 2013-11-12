@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace SistemaHospital.Datos
 {
@@ -43,10 +44,10 @@ namespace SistemaHospital.Datos
        {  
            string sql = "SELECT count(*) from usuarios where userName=@username and pass=@pass and estado='ALTA'";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
-           cmd.Parameters.Add("@pass", MySqlDbType.VarChar, 10).Value = contra;
+           cmd.Parameters.Add("@pass", MySqlDbType.VarChar, 25).Value = contra;
            cmd.Parameters.Add("@username", MySqlDbType.VarChar, 10).Value = user;
            MySqlDataReader res = cmd.ExecuteReader();
-         
+           
            if (res.Read())
            {
                return res.GetInt32(0);
@@ -88,7 +89,7 @@ namespace SistemaHospital.Datos
            String sql = "CALL SPUsuarios(null,@user,@pass,@tipo,'ALTA',1)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@user",MySqlDbType.VarChar,10).Value=user;
-           cmd.Parameters.Add("@pass", MySqlDbType.VarChar, 10).Value = contra;
+           cmd.Parameters.Add("@pass", MySqlDbType.VarChar, 25).Value = contra;
            cmd.Parameters.Add("@tipo", MySqlDbType.VarChar, 10).Value = tipo;
            MySqlDataReader res = cmd.ExecuteReader();
            if (res.Read())
@@ -144,9 +145,24 @@ namespace SistemaHospital.Datos
 
        }
 
-       public void listaUsuarios()
-       {
-           //implementar esto deberia retornar un tipo de dato tabla
+       public DataTable listaUsuarios()
+       { DataTable tabla = new DataTable("Usuarios");
+
+
+           if (String.Equals(this.estadoConexion,"Open"))
+           {
+              
+               String sql = "SELECT * from usuarios";
+               MySqlCommand cmd = new MySqlCommand(sql, conexion);
+               MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+               returnVal.Fill(tabla);
+             
+           }
+           else{
+               this.cerrar();
+               
+           }
+           return tabla;
        }
        
 /*-------------------------------------------------------Metodos que gestionan a los Medicos------------------------------------------*/

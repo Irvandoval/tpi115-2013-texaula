@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SistemaHospital.Datos;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 
 namespace SistemaHospital.Negocio
@@ -13,12 +14,12 @@ namespace SistemaHospital.Negocio
         private string username;
         private string pass;
         public string tipoUsuario;
-       
+          
 
        public Usuario(string username,string pass)
         {
             this.username=username;
-            this.pass = pass;
+            this.pass =Encriptador.RijndaelSimple.Encriptar (pass);
           
            
         }
@@ -74,6 +75,13 @@ namespace SistemaHospital.Negocio
            return res;
         }
 
+        public static DataTable obtenerListaUsuarios()
+        {
+            DB nuevo = new DB();
+            nuevo.conectar();
+            DataTable tabUsuarios = nuevo.listaUsuarios();
+            return tabUsuarios;
+        }
        
     }
 }
