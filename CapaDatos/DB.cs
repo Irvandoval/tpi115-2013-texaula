@@ -164,6 +164,25 @@ namespace SistemaHospital.Datos
            }
            return tabla;
        }
+
+
+       public int modificaUsuario(int idUser, int username, string contra, string tipo, string estado)
+       {
+           string sql = "SPUsuarios(@iduser,@username,@pass,@tipo,@estado,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@iduser", MySqlDbType.Int32).Value = idUser;
+           cmd.Parameters.Add("@username", MySqlDbType.VarChar, 10).Value = username;
+           cmd.Parameters.Add("@pass", MySqlDbType.VarChar, 25).Value = contra;
+           cmd.Parameters.Add("@tipo", MySqlDbType.VarChar, 10).Value = tipo;
+           cmd.Parameters.Add("@estado", MySqlDbType.VarChar, 10).Value = estado;
+           MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+           return 0;
+         
+       }
        
 /*-------------------------------------------------------Metodos que gestionan a los Medicos------------------------------------------*/
 
@@ -223,6 +242,10 @@ namespace SistemaHospital.Datos
        }
 
 
+       public int modificaMedico(string dui,int idusuario,string nombres,string apellidos, string fechaNacimento,string sexo , string jvmp)
+       {
+           return 0;    
+       }
 /*------------------------------------------------------Metodos que gestionan a los Recepcionistas-------------------------------------*/
        public int addRecepcionista(string dui, int idUser,string nombres, string apellidos,string fechaNacimiento ) {
            string sql = "CALL SPRecepcionistas(@dui,@idUsuario,@nombres,@apellidos,@fechanacimiento,1)";
@@ -275,26 +298,13 @@ namespace SistemaHospital.Datos
            return trep;
        }
 
-
-       /*------------------------------------------------------Metodos que gestionan a los Recepcionistas-------------------------------------*/
-       public int addRecepcionista(string dui, int idUser, string nombres, string apellidos, string fechaNacimiento)
+       public int modificaRecepcionista(string dui,string nombres, string apellidos)
        {
-           string sql = "CALL SPRecepcionistas(@dui,@idUsuario,@nombres,@apellidos,@fechanacimiento,1)";
-           MySqlCommand cmd = new MySqlCommand(sql, conexion);
-           cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
-           cmd.Parameters.Add("@iduser", MySqlDbType.Int32).Value = idUser;
-           cmd.Parameters.Add("@nombres", MySqlDbType.VarChar, 45).Value = nombres;
-           cmd.Parameters.Add("@apellidos", MySqlDbType.VarChar, 45).Value = apellidos;
-           cmd.Parameters.Add("@fechaNacimiento", MySqlDbType.Date).Value = fechaNacimiento;
-           MySqlDataReader res = cmd.ExecuteReader();
-
-           if (res.Read())
-           {
-               return res.GetInt32(0);
-           }
            return 0;
        }
-       
+
+       /*------------------------------------------------------Metodos que gestionan -------------------------------------*/
+      
 
  /*------------------------------------------------Metodos que gestionan las enfermeras-------------------------------------------------*/ 
 
@@ -342,11 +352,17 @@ namespace SistemaHospital.Datos
            else
            {
                this.cerrar();
-
+               
            }
            return tenf;
        }
 
+
+       public int modificaEnfermera( string dui ,string nombres,string apellidos,string fechaNacimiento)
+       {
+           return 0;
+
+       }
 
        /*------------------------------------------------------Metodos que gestionan a los Recepcionistas-------------------------------------*/
      /*  public int addRecepcionista(string dui, int idUser, string nombres, string apellidos, string fechaNacimiento)
@@ -417,6 +433,11 @@ namespace SistemaHospital.Datos
            }
            return 0;
        }
+
+       public int modificaExpediente(int idExpediente,string dui_paciente,int idDiag)
+       {
+           return 0;
+       }
        
 /*----------------------------------------Metodos que gestionan Tratamientos---------*/
 
@@ -485,6 +506,11 @@ namespace SistemaHospital.Datos
            }
            return ttrat;  
        }
+
+       public int modificaTratamiento(int idtratamiento,string nombre)
+       {
+           return 0;
+       }
 /*------------------------------Metodos que gestionan consultas---------------------*/
        public int addConsulta(int idExpediente,string duiMedico, string motivo)
        {//supondremos que la fecha de la consulta es hoy!!
@@ -505,6 +531,7 @@ namespace SistemaHospital.Datos
        {
            return 0;
        }
+
 /*----------------------------------Metodos que gestionan Paciente--------------------*/
        public int addPaciente(string nombres, string apellidos, string dui, string telefono,
        string fechaNac, string seguro, string sexo, string estado)
@@ -512,6 +539,33 @@ namespace SistemaHospital.Datos
            return 0;
        }
        public int eliminaPaciente(string dui)
+       {
+           return 0;
+       }
+
+
+       public DataTable ListarPaciente()
+       {
+           DataTable tpac = new DataTable("Pacientes");
+           if (String.Equals(this.estadoConexion, "Open"))
+           {
+
+               String sql = "SELECT * from pacientes";
+               MySqlCommand cmd = new MySqlCommand(sql, conexion);
+               MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+               returnVal.Fill(tpac);
+
+           }
+           else
+           {
+               this.cerrar();
+
+           }
+           return tpac;
+       }
+
+       public int ModificarPaciente(string nombres, string apellidos, string dui, string telefono,
+       string fechaNac, string seguro, string sexo, string estado)
        {
            return 0;
        }
