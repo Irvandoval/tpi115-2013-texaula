@@ -424,6 +424,7 @@ namespace SistemaHospital.Datos
            
            int id=getIdExpediente(dui);
            string sql="CALL SPExpedientes(@idExp,null,null,3)";
+
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@idTratamiento", MySqlDbType.Int32).Value = id;
            MySqlDataReader res = cmd.ExecuteReader();
@@ -436,7 +437,18 @@ namespace SistemaHospital.Datos
 
        public int modificaExpediente(int idExpediente,string dui_paciente,int idDiag)
        {
-           return 0;
+           string sql = "CALL SPExpedientes(@idexp,@dui,@diag,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idexp", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@dui", MySqlDbType.VarChar,10).Value = dui_paciente;
+           cmd.Parameters.Add("@diag", MySqlDbType.Int32).Value = idDiag;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+             val= res.GetInt32(0);
+           }
+           return val;
        }
        
 /*----------------------------------------Metodos que gestionan Tratamientos---------*/
@@ -509,7 +521,19 @@ namespace SistemaHospital.Datos
 
        public int modificaTratamiento(int idtratamiento,string nombre)
        {
-           return 0;
+           string sql = "CALL SPTratamientos(@idTratamiento,@nombre,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idTratamiento", MySqlDbType.Int32).Value = idtratamiento;
+           cmd.Parameters.Add("@nombre", MySqlDbType.VarChar,45).Value = nombre;
+           int val = 0;
+            MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+              val= res.GetInt32(0);
+           }
+
+
+           return val;
        }
 /*------------------------------Metodos que gestionan consultas---------------------*/
        public int addConsulta(int idExpediente,string duiMedico, string motivo)
@@ -577,26 +601,71 @@ namespace SistemaHospital.Datos
 
        public int addExamen(string nombre)
        {
-           string sql = "CALL SPConsultas(null,@nombre,1)";
+           string sql = "CALL SPExamenes(null,@nombre,1)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
-           cmd.Parameters.Add("@duimed", MySqlDbType.VarChar, 10).Value = duiMedico;
+           cmd.Parameters.Add("@nombre",MySqlDbType.VarChar,45).Value = nombre;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val= res.GetInt32(0);
+           }
+
+
+           return val;
+          
+
 
        }
 
        public int eliminaExamen(string idExamen)
        {
-           return 0;
-            
+           string sql = "CALL SPExamenes(@idExamen,null,3)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idExamen", MySqlDbType.Int32).Value = idExamen;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;   
        }
 
        public int modificaExamen(string idExamen, string nombre)
        {
-           return 0;
+           string sql = "CALL SPExamenes(@idExamen,@nombre,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idExamen", MySqlDbType.Int32).Value = idExamen;
+           cmd.Parameters.Add("@nombre", MySqlDbType.VarChar,45).Value =nombre;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;   
        }
 
-       public DataTable listadeExamenes()
+       public DataTable listaExamenes()
        {
            DataTable texa = new DataTable("Examenes");
+           if (String.Equals(this.estadoConexion, "Open"))
+           {
+
+               String sql = "SELECT * from examenes";
+               MySqlCommand cmd = new MySqlCommand(sql, conexion);
+               MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+               returnVal.Fill(texa);
+
+           }
+           else
+           {
+               this.cerrar();
+
+           }
            return texa;
        }
     /*-------------------------- Gestion de Urgencia---------------------------------------------*/

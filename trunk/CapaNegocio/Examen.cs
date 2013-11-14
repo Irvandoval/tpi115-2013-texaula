@@ -47,7 +47,7 @@ namespace SistemaHospital.Negocio
         {
             DB nuevoDB = new DB();
             nuevoDB.conectar();
-            DataTable tabExamen = nuevoDB.listadeExamenes();
+            DataTable tabExamen = nuevoDB.listaExamenes();
             nuevoDB.cerrar();
             return tabExamen;
         }
