@@ -83,6 +83,8 @@ namespace SistemaHospital.Negocio
         public int actualizarMedico()
         {
             DB nuevoDB = new DB();
+            int res = nuevoDB.modificaMedico(this.Dui,this.idUsuario,this.nombres,this.apellidos,this.fechaNac,this.sexo,this.jvmp);
+            nuevoDB.cerrar();
             return 0;
            
         }

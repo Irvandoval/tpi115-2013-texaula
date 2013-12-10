@@ -619,7 +619,7 @@ namespace SistemaHospital.Datos
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@idexp", MySqlDbType.Int32).Value = idExpediente;
            cmd.Parameters.Add("@duimed",MySqlDbType.VarChar,10).Value=duiMedico;
-           cmd.Parameters.Add("@motivo", MySqlDbType.VarChar, 10).Value = motivo;
+           cmd.Parameters.Add("@motivo", MySqlDbType.VarChar, 100).Value = motivo;
            MySqlDataReader res = cmd.ExecuteReader();
            if (res.Read())
            {
@@ -632,6 +632,31 @@ namespace SistemaHospital.Datos
 
        public int eliminaConsulta(int idConsulta)
        {
+           string sql = "CALL SPConsultas(@idConsulta,null,null,null,null,3)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idconsulta", MySqlDbType.Int32).Value = idConsulta;
+           MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+          
+           return 0;
+       }
+
+       public int modificaConsulta(int idConsulta, int idExpediente,string fecha, string duiMedico,string motivo) { 
+            string sql = "CALL SPConsultas(@idconsulta,@idexp,@duimed,@fecha,@motivo,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idconsulta", MySqlDbType.Int32).Value = idConsulta;
+           cmd.Parameters.Add("@idexp", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@duimed",MySqlDbType.VarChar,10).Value=duiMedico;
+           cmd.Parameters.Add("@motivo", MySqlDbType.VarChar, 100).Value = motivo;
+           cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = fecha;
+           MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
            return 0;
        }
 
@@ -747,7 +772,7 @@ namespace SistemaHospital.Datos
 
        }
 
-       public int eliminaExamen(string idExamen)
+       public int eliminaExamen(int idExamen)
        {
            string sql = "CALL SPExamenes(@idExamen,null,3)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
@@ -762,7 +787,7 @@ namespace SistemaHospital.Datos
            return val;   
        }
 
-       public int modificaExamen(string idExamen, string nombre)
+       public int modificaExamen(int idExamen, string nombre)
        {
            string sql = "CALL SPExamenes(@idExamen,@nombre,2)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
@@ -821,7 +846,7 @@ namespace SistemaHospital.Datos
 
        /*---------------------------------Gestion de Diagnosticos----------------------------------------------------------*/
 
-       public int addDiagnostico(string iddiag,string nombre,string tipo , string fase)
+       public int addDiagnostico(int iddiag,string nombre,string tipo , string fase)
        {
            string sql = "CALL SPDiagnosticos(@id,@nombre,@tipo,@fase,1)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
