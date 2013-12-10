@@ -64,11 +64,16 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Administrador\gDiagnosticos.aspx" />
+    <Content Include="Administrador\gEnfermeras.aspx" />
+    <Content Include="Administrador\gExamenes.aspx" />
+    <Content Include="Administrador\gMedicos.aspx" />
+    <Content Include="Administrador\gRecepcionistas.aspx" />
     <Content Include="Administrador\gUsuarios.aspx" />
     <Content Include="Administrador\menuppal.aspx" />
-    <Content Include="Doctor\principal.aspx" />
-    <Content Include="Enfermera\enfermera.aspx" />
-    <Content Include="Recepcionista\principal.aspx" />
+    <Content Include="Doctor\menuppal.aspx" />
+    <Content Include="Recepcionista\gPacientes.aspx" />
+    <Content Include="Recepcionista\menuppal.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -123,6 +128,41 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\gDiagnosticos.aspx.cs">
+      <DependentUpon>gDiagnosticos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\gDiagnosticos.aspx.designer.cs">
+      <DependentUpon>gDiagnosticos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\gEnfermeras.aspx.cs">
+      <DependentUpon>gEnfermeras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\gEnfermeras.aspx.designer.cs">
+      <DependentUpon>gEnfermeras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\gExamenes.aspx.cs">
+      <DependentUpon>gExamenes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\gExamenes.aspx.designer.cs">
+      <DependentUpon>gExamenes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\gMedicos.aspx.cs">
+      <DependentUpon>gMedicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\gMedicos.aspx.designer.cs">
+      <DependentUpon>gMedicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\gRecepcionistas.aspx.cs">
+      <DependentUpon>gRecepcionistas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\gRecepcionistas.aspx.designer.cs">
+      <DependentUpon>gRecepcionistas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\gUsuarios.aspx.cs">
       <DependentUpon>gUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -144,30 +184,30 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Doctor\principal.aspx.cs">
-      <DependentUpon>principal.aspx</DependentUpon>
+    <Compile Include="Doctor\menuppal.aspx.cs">
+      <DependentUpon>menuppal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Doctor\principal.aspx.designer.cs">
-      <DependentUpon>principal.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Enfermera\enfermera.aspx.cs">
-      <DependentUpon>enfermera.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Enfermera\enfermera.aspx.designer.cs">
-      <DependentUpon>enfermera.aspx</DependentUpon>
+    <Compile Include="Doctor\menuppal.aspx.designer.cs">
+      <DependentUpon>menuppal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recepcionista\principal.aspx.cs">
-      <DependentUpon>principal.aspx</DependentUpon>
+    <Compile Include="Recepcionista\gPacientes.aspx.cs">
+      <DependentUpon>gPacientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Recepcionista\principal.aspx.designer.cs">
-      <DependentUpon>principal.aspx</DependentUpon>
+    <Compile Include="Recepcionista\gPacientes.aspx.designer.cs">
+      <DependentUpon>gPacientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Recepcionista\menuppal.aspx.cs">
+      <DependentUpon>menuppal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recepcionista\menuppal.aspx.designer.cs">
+      <DependentUpon>menuppal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -219,7 +259,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50462</DevelopmentServerPort>
+          <DevelopmentServerPort>50387</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

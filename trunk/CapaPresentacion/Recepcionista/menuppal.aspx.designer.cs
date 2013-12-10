@@ -10,7 +10,7 @@
 namespace SistemaHospital.Presentacion.Recepcionista {
     
     
-    public partial class principal {
+    public partial class menuppal {
         
         /// <summary>
         /// Control Panel1.

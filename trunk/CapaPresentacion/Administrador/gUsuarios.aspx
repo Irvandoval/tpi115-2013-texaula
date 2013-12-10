@@ -3,36 +3,42 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h1>
-        <strong>Gestión de usuarios</strong></h1>
-    <p>
-        <strong>
-    </p>
+        <strong>Gestión de usuarios<br />
+        </strong></h1>
+    
     <asp:GridView ID="tUsuarios" runat="server" AutoGenerateColumns="False" 
         CellPadding="4" ForeColor="#333333" GridLines="None" 
         onselectedindexchanged="GridView1_SelectedIndexChanged" 
         style="margin-left: 241px">
-        <AlternatingRowStyle BackColor="White" />
+        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:BoundField DataField="idUsuario" HeaderText="ID" />
             <asp:BoundField AccessibleHeaderText="Usuario" DataField="userName" 
                 HeaderText="Usuario" />
-            <asp:BoundField DataField="pass" HeaderText="pass" />
+            <asp:BoundField DataField="pass" HeaderText="Pass " />
             <asp:BoundField DataField="tipo" HeaderText="Tipo" />
-            <asp:CommandField ShowDeleteButton="True" />
+            <asp:BoundField DataField="estado" HeaderText="Estado" 
+                SortExpression="estado" />
             <asp:CommandField ButtonType="Button" ShowEditButton="True" />
+            <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" 
+                        CommandName="Delete" Text="Eliminar"></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
-        <EditRowStyle BackColor="#2461BF" />
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        <EditRowStyle BackColor="#999999" />
+        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+        <SortedAscendingHeaderStyle BackColor="#506C8C" />
+        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
     <h1>
-        </strong>
+       
     </h1>
 </asp:Content>

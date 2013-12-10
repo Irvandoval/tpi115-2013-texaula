@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SistemaHospital.Presentacion.Recepcionista
 {
-    public partial class principal : System.Web.UI.Page
+    public partial class menuppal : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
