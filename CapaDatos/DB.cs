@@ -178,7 +178,7 @@ namespace SistemaHospital.Datos
            if (String.Equals(this.estadoConexion,"Open"))
            {
               
-               String sql = "SELECT * from usuarios";
+               String sql = "call SPUsuarios(null,null,null,null,null,4)";
                MySqlCommand cmd = new MySqlCommand(sql, conexion);
                MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
                returnVal.Fill(tabla);
@@ -262,7 +262,7 @@ namespace SistemaHospital.Datos
            if (String.Equals(this.estadoConexion, "Open"))
            {
 
-               String sql = "SELECT * from medicos";
+               String sql = "call SPMedicos(null,null,null,null,null,null,null,4)";
                MySqlCommand cmd = new MySqlCommand(sql, conexion);
                MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
                returnVal.Fill(tmed);
@@ -301,7 +301,7 @@ namespace SistemaHospital.Datos
 
        public int eliminaRecepcionsta(string dui)
        {
-           string sql = "CALL SPRecepcionistas(@dui,null,null,null,null,3)";
+           string sql = "CALL SPRecepcionistas(@dui,null,null,null,3)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
            MySqlDataReader res = cmd.ExecuteReader();
@@ -319,7 +319,7 @@ namespace SistemaHospital.Datos
            if (String.Equals(this.estadoConexion, "Open"))
            {
 
-               String sql = "SELECT * from recepcionistas";
+               String sql = "CALL SPRecepcionistas(null,null,null,null,4)";
                MySqlCommand cmd = new MySqlCommand(sql, conexion);
                MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
                returnVal.Fill(trep);
@@ -378,7 +378,7 @@ namespace SistemaHospital.Datos
            if (String.Equals(this.estadoConexion, "Open"))
            {
 
-               String sql = "SELECT * from enfermeras";
+               String sql = "CALL SPEnfermeras(null,null,null,null,4)";
                MySqlCommand cmd = new MySqlCommand(sql, conexion);
                MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
                returnVal.Fill(tenf);
@@ -540,7 +540,7 @@ namespace SistemaHospital.Datos
            if (String.Equals(this.estadoConexion, "Open"))
            {
 
-               String sql = "SELECT * from tratamientos";
+               String sql = "CALL SPTratamientos(null,null,4)";
                MySqlCommand cmd = new MySqlCommand(sql, conexion);
                MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
                returnVal.Fill(ttrat);
@@ -690,7 +690,7 @@ namespace SistemaHospital.Datos
            if (String.Equals(this.estadoConexion, "Open"))
            {
 
-               String sql = "SELECT * from examenes";
+               String sql = "CALL SPExamenes(null,null,4)";
                MySqlCommand cmd = new MySqlCommand(sql, conexion);
                MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
                returnVal.Fill(texa);
@@ -737,7 +737,22 @@ namespace SistemaHospital.Datos
        }
        public DataTable listaDiagnosticos(){
            DataTable tdiag= new DataTable("Diagnosticos");
+           if (String.Equals(this.estadoConexion, "Open"))
+           {
+
+               String sql = "call SPDiagnosticos(null,null,null,null,4)";
+               MySqlCommand cmd = new MySqlCommand(sql, conexion);
+               MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+               returnVal.Fill(tdiag);
+
+           }
+           else
+           {
+               this.cerrar();
+
+           }
            return tdiag;
+        
        }
 
        public int modificaDiagnostico(int idDiagnostico,string nombre, string tipo, string fase)

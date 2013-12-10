@@ -31,14 +31,10 @@ namespace SistemaHospital.Presentacion.Administrador
 
 
 
-        void GridView1_RowDeleting (Object sender, GridViewDeleteEventArgs e)
+        void GridView_RowDeleting(Object sender, GridViewDeleteEventArgs e)
         {
-
+            
         }
-      
-     protected void  GridView1_Delete(object sender,DataGridCommandEventArgs e){
-       
-      }
 
      protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
      {
