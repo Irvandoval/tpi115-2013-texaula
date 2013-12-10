@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SistemaHospital.Presentacion.Administrador {
+namespace SistemaHospital.Presentacion.Doctor {
     
     
     public partial class WebForm1 {

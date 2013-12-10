@@ -64,9 +64,11 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Administrador\gUsuarios.aspx" />
     <Content Include="Administrador\menuppal.aspx" />
-    <Content Include="Doctor\WebForm1.aspx" />
+    <Content Include="Doctor\principal.aspx" />
     <Content Include="Enfermera\enfermera.aspx" />
+    <Content Include="Recepcionista\principal.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -121,6 +123,13 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\gUsuarios.aspx.cs">
+      <DependentUpon>gUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\gUsuarios.aspx.designer.cs">
+      <DependentUpon>gUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\menuppal.aspx.cs">
       <DependentUpon>menuppal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,12 +144,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Doctor\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="Doctor\principal.aspx.cs">
+      <DependentUpon>principal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Doctor\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="Doctor\principal.aspx.designer.cs">
+      <DependentUpon>principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Enfermera\enfermera.aspx.cs">
       <DependentUpon>enfermera.aspx</DependentUpon>
@@ -153,6 +162,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recepcionista\principal.aspx.cs">
+      <DependentUpon>principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recepcionista\principal.aspx.designer.cs">
+      <DependentUpon>principal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -179,7 +195,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="imagenes\" />
     <Folder Include="img\" />
-    <Folder Include="Recepcionista\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using SistemaHospital.Negocio;
+using System.Data;
 
 namespace CapaPresentacion.Account
 {
@@ -27,9 +28,11 @@ namespace CapaPresentacion.Account
 
             if (autentifica)
             {
-                nuevo.registrarLogin();
-                Response.Write(HttpContext.Current.User.Identity.Name);
-
+               // nuevo.registrarLogin();
+               // Response.Write(HttpContext.Current.User.Identity.Name);
+              string nn=nuevo.getTipoUsuario();
+               Response.Write(nn);
+                
             }
             else
             {

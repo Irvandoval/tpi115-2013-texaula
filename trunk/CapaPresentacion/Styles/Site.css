@@ -10,6 +10,7 @@ body
     padding: 0px;
     color: #696969;
     height: 304px;
+    text-align: center;
 }
 
 a:link, a:visited
@@ -167,7 +168,7 @@ div.menu
 div.menu ul
 {
     list-style: none;
-    margin-top: -20px;
+    margin-top: -1px;
     padding: 0px;
     width: auto;
 }

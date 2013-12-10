@@ -23,6 +23,12 @@ namespace SistemaHospital.Presentacion
             DataTable listusers = Usuario.obtenerListaUsuarios();
             dataUsuarios.DataSource = listusers;
             dataUsuarios.DataBind();
+           
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }
