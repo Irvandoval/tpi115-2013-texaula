@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SistemaHospital.Presentacion.Administrador {
+namespace SistemaHospital.Presentacion.Recepcionista {
     
     
-    public partial class WebForm1 {
+    public partial class principal {
         
         /// <summary>
         /// Control Panel1.

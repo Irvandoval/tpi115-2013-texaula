@@ -7,27 +7,18 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SistemaHospital.Presentacion.Doctor {
+namespace SistemaHospital.Presentacion.Administrador {
     
     
-    public partial class WebForm1 {
+    public partial class gUsuarios {
         
         /// <summary>
-        /// Control Panel1.
+        /// Control tUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.GridView tUsuarios;
     }
 }

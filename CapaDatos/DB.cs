@@ -60,6 +60,7 @@ namespace SistemaHospital.Datos
        }
 
 
+      
        public int editEstadoUsuario(string nuevoEstado)
        {
            return 0;//HAY QUE IMPLEMENTARLO XD
@@ -145,6 +146,31 @@ namespace SistemaHospital.Datos
 
        }
 
+
+       public String getTipoUsuario(string username)
+       {
+           DataTable tipoUsuario= new DataTable("usuario");
+           string tu = "";
+           if (String.Equals(this.estadoConexion, "Open"))
+           {
+
+               String sql = "CALL SPUsuarios(null,@user,null,null,null,4);";
+               MySqlCommand cmd = new MySqlCommand(sql, conexion);
+               MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+               returnVal.Fill(tipoUsuario);
+
+           }
+           else
+           {
+               this.cerrar();
+
+           }
+
+           return "jj";
+
+
+       }
+
        public DataTable listaUsuarios()
        { DataTable tabla = new DataTable("Usuarios");
 
@@ -164,7 +190,16 @@ namespace SistemaHospital.Datos
            }
            return tabla;
        }
+        public DataSet obtenerUsuario()
+       {
+           DataSet dataUser= new DataSet("user");
+            String sql = "select * from usuarios where idusuario=1";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
+           returnVal.Fill(dataUser);
+            return dataUser;
 
+       }
 
        public int modificaUsuario(int idUser, int username, string contra, string tipo, string estado)
        {

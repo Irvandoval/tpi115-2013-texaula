@@ -9,13 +9,16 @@
     </h2>
     <p>
         Especifique su nombre de usuario y contraseña.
-        <asp:HyperLink ID="RegisterHyperLink" runat="server"  EnableViewState="false">Registrarse</asp:HyperLink> &nbspsi no tiene una cuenta.
-    </p>
+        </p>
    <center>
     <asp:Login ID="LoginUser" runat="server" EnableViewState="False"  OnAuthenticate="LoginUser_Authenticate"
     DestinationPageUrl="~/Default.aspx" FailureText="Error al iniciar Sesión ."
-        BackColor="#F7F7DE" BorderColor="#CCCC99" BorderStyle="Solid" BorderWidth="1px" 
-        Font-Names="Verdana" Font-Size="10pt"    >
+        BackColor="#EFF3FB" BorderColor="#B5C7DE" BorderStyle="Solid" BorderWidth="1px" 
+        Font-Names="Verdana" Font-Size="0.8em" BorderPadding="4" 
+           ForeColor="#333333"    >
+
+
+        <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
 
 
         <LayoutTemplate>
@@ -23,7 +26,7 @@
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>
             </span>
             <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
-                 ValidationGroup="LoginUserValidationGroup"/>
+                 ValidationGroup="LoginUserValidationGroup" Height="41px" Width="407px"/>
             <div  class="accountInfo"  >
                 <fieldset class="login">
                     <legend>Información de cuenta</legend>
@@ -53,7 +56,11 @@
                 </p>
             </div>
         </LayoutTemplate>
-        <TitleTextStyle BackColor="#6B696B" Font-Bold="True" ForeColor="#FFFFFF" />
+        <LoginButtonStyle BackColor="White" BorderColor="#507CD1" BorderStyle="Solid" 
+            BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" />
+        <TextBoxStyle Font-Size="0.8em" />
+        <TitleTextStyle BackColor="#507CD1" Font-Bold="True" ForeColor="#FFFFFF" 
+            Font-Size="0.9em" />
     </asp:Login>
     </center>
 </asp:Content>
