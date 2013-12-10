@@ -29,7 +29,7 @@ namespace SistemaHospital.Negocio
         {
             DB nuevoDB = new DB();
             nuevoDB.conectar();
-            int enf = nuevoDB.addEnfermera(this.dui, this.nombres, this.apellidos, this.fechaNac);
+            int enf = nuevoDB.modificaEnfermera(this.dui, this.nombres, this.apellidos, this.fechaNac);
             nuevoDB.cerrar();
             return enf;
          
