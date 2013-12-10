@@ -31,12 +31,21 @@ namespace SistemaHospital.Negocio
 
         public int eliminarExamen()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int exam = nuevoDB.eliminaExamen(this.idExamen);
+            nuevoDB.cerrar();
+            return exam;
         }
 
         public int actualizarExamen()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int exam = nuevoDB.modificaExamen(this.idExamen,this.nombre);
+            nuevoDB.cerrar();
+            return exam;
+            
         }
 
         public int consultarExamen()

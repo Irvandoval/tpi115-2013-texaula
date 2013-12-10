@@ -10,24 +10,38 @@ namespace SistemaHospital.Negocio
 {
     public class Recepcionist
     {
-        private int idRecepcionista;
+        private string dui;
+        private int idUsuario;
         private string nombres;
         private string apellidos;
         private string fechaNac;
 
         public int agregarRecepcionista()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int  rcp= nuevoDB.addRecepcionista(this.dui,this.idUsuario,this.nombres,this.apellidos,this.fechaNac);
+            nuevoDB.cerrar();
+            return rcp;
         }
 
         public int eliminarRecepcionista()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int  rcp= nuevoDB.eliminaRecepcionsta(this.dui);
+            nuevoDB.cerrar();
+            return rcp;
+           
         }
 
         public int actualizarRecepcionista()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int rcp = nuevoDB.modificaRecepcionista(this.dui, this.idUsuario, this.nombres, this.apellidos, this.fechaNac);
+            nuevoDB.cerrar();
+            return rcp;
         }
 
         public int consultarRecepcionista()

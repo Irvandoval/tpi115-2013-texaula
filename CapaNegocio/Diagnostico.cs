@@ -17,17 +17,35 @@ namespace SistemaHospital.Negocio
 
         public int agregarDiagnostico()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.addDiagnostico(this.idDiagnostico,this.nombre, this.tipo, this.fase);
+            nuevoDB.cerrar();
+            return res;
+            
         }
 
         public int eliminarDiagnostico()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.eliminarDiagnostico(this.idDiagnostico);
+            nuevoDB.cerrar();
+            return res;
+            
+
+            
         }
 
         public int actualizarDiagnostico()
         {
-            return 0;
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.modificaDiagnostico(this.idDiagnostico, this.nombre, this.tipo, this.fase);
+            nuevoDB.cerrar();
+            return res;
+            
+            
         }
 
         public int consultarDiagnostico()
