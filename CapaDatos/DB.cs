@@ -279,7 +279,24 @@ namespace SistemaHospital.Datos
 
        public int modificaMedico(string dui,int idusuario,string nombres,string apellidos, string fechaNacimento,string sexo , string jvmp)
        {
-           return 0;    
+           string sql = "CALL SPMedicos(@dui,@iduser,@nombres,@apellidos,@fechaNacimiento,@sexo,@jvmp,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
+           cmd.Parameters.Add("@iduser", MySqlDbType.Int32).Value = idusuario;
+           cmd.Parameters.Add("@nombres", MySqlDbType.VarChar, 45).Value = nombres;
+           cmd.Parameters.Add("@apellidos", MySqlDbType.VarChar, 45).Value = apellidos;
+           cmd.Parameters.Add("@fechaNacimiento", MySqlDbType.Date).Value = fechaNacimento;
+           cmd.Parameters.Add("@sexo", MySqlDbType.VarChar, 10).Value = sexo;
+           MySqlDataReader res = cmd.ExecuteReader();
+
+           int v = 0;
+           if (res.Read())
+           {
+              v= res.GetInt32(0);
+           }
+           
+
+           return v;    
        }
 /*------------------------------------------------------Metodos que gestionan a los Recepcionistas-------------------------------------*/
        public int addRecepcionista(string dui, int idUser,string nombres, string apellidos,string fechaNacimiento ) {
@@ -332,11 +349,24 @@ namespace SistemaHospital.Datos
            }
            return trep;
        }
-
-       public int modificaRecepcionista(string dui,string nombres, string apellidos)
+       public int modificaRecepcionista(string dui, int idUser, string nombres, string apellidos, string fechaNacimiento)
        {
+           string sql = "CALL SPRecepcionistas(@dui,@idUsuario,@nombres,@apellidos,@fechanacimiento,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
+           cmd.Parameters.Add("@iduser", MySqlDbType.Int32).Value = idUser;
+           cmd.Parameters.Add("@nombres", MySqlDbType.VarChar, 45).Value = nombres;
+           cmd.Parameters.Add("@apellidos", MySqlDbType.VarChar, 45).Value = apellidos;
+           cmd.Parameters.Add("@fechaNacimiento", MySqlDbType.Date).Value = fechaNacimiento;
+           MySqlDataReader res = cmd.ExecuteReader();
+
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
            return 0;
        }
+
 
        /*------------------------------------------------------Metodos que gestionan -------------------------------------*/
       
@@ -393,11 +423,23 @@ namespace SistemaHospital.Datos
        }
 
 
-       public int modificaEnfermera( string dui ,string nombres,string apellidos,string fechaNacimiento)
+       public int modificaEnfermera(string dui, string nombres, string apellidos, string fechaNacimiento)
        {
-           return 0;
+           string sql = "CAll SPEnfermeras(@dui,@nombres,@apellidos,@fechaNacimiento,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
+           cmd.Parameters.Add("@nombres", MySqlDbType.VarChar, 45).Value = nombres;
+           cmd.Parameters.Add("@apellidos", MySqlDbType.VarChar, 45).Value = apellidos;
+           cmd.Parameters.Add("@fechaNacimiento", MySqlDbType.Date).Value = fechaNacimiento;
+           MySqlDataReader res = cmd.ExecuteReader();
 
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+           return 0;
        }
+
 
        /*------------------------------------------------------Metodos que gestionan a los Recepcionistas-------------------------------------*/
      /*  public int addRecepcionista(string dui, int idUser, string nombres, string apellidos, string fechaNacimiento)
@@ -599,11 +641,43 @@ namespace SistemaHospital.Datos
        public int addPaciente(string nombres, string apellidos, string dui, string telefono,
        string fechaNac, string seguro, string sexo, string estado,string direccion)
        {
+           string sql = "call SPPAcientes(@dui,@nombres,@apellidos,@fechaNacimiento,@seguro,@sexo,@direccion,@telefono,@estado,1)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+         //  cmd.Parameters.Add("@idexp", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
+           cmd.Parameters.Add("@nombres", MySqlDbType.VarChar, 45).Value = nombres;
+           cmd.Parameters.Add("@apellidos", MySqlDbType.VarChar, 45).Value = apellidos;
+           cmd.Parameters.Add("@fechaNacimeinto", MySqlDbType.Date).Value = fechaNac;
+           cmd.Parameters.Add("@seguro", MySqlDbType.VarChar, 45).Value = seguro;
+           cmd.Parameters.Add("@sexo", MySqlDbType.VarChar, 10).Value = sexo;
+           cmd.Parameters.Add("@direccion", MySqlDbType.VarChar, 45).Value = direccion;
+           cmd.Parameters.Add("@telefono", MySqlDbType.VarChar, 15).Value = telefono;
+           cmd.Parameters.Add("@estado", MySqlDbType.VarChar, 10).Value = estado;
+           MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+
+
            return 0;
        }
+
+
        public int eliminaPaciente(string dui)
        {
+           string sql = "call SPPAcientes(@dui,null,null,null,null,null,null,null,null,3)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
+           MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+
+
            return 0;
+           
        }
 
 
@@ -630,7 +704,27 @@ namespace SistemaHospital.Datos
        public int ModificarPaciente(string nombres, string apellidos, string dui, string telefono,
        string fechaNac, string seguro, string sexo, string estado,string direccion)
        {
+           string sql = "call SPPAcientes(@dui,@nombres,@apellidos,@fechaNacimiento,@seguro,@sexo,@direccion,@telefono,@estado,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           //  cmd.Parameters.Add("@idexp", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
+           cmd.Parameters.Add("@nombres", MySqlDbType.VarChar, 45).Value = nombres;
+           cmd.Parameters.Add("@apellidos", MySqlDbType.VarChar, 45).Value = apellidos;
+           cmd.Parameters.Add("@fechaNacimeinto", MySqlDbType.Date).Value = fechaNac;
+           cmd.Parameters.Add("@seguro", MySqlDbType.VarChar, 45).Value = seguro;
+           cmd.Parameters.Add("@sexo", MySqlDbType.VarChar, 10).Value = sexo;
+           cmd.Parameters.Add("@direccion", MySqlDbType.VarChar, 45).Value = direccion;
+           cmd.Parameters.Add("@telefono", MySqlDbType.VarChar, 15).Value = telefono;
+           cmd.Parameters.Add("@estado", MySqlDbType.VarChar, 10).Value = estado;
+           MySqlDataReader res = cmd.ExecuteReader();
+           if (res.Read())
+           {
+               return res.GetInt32(0);
+           }
+
+
            return 0;
+         
        }
 /*----------------------------------Gestion de Examenes--------------------------------------------------*/
 
@@ -727,9 +821,23 @@ namespace SistemaHospital.Datos
 
        /*---------------------------------Gestion de Diagnosticos----------------------------------------------------------*/
 
-       public int addDiagnostico(string nombre,string tipo , string fase)
+       public int addDiagnostico(string iddiag,string nombre,string tipo , string fase)
        {
-           return 0;
+           string sql = "CALL SPDiagnosticos(@id,@nombre,@tipo,@fase,1)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = iddiag;
+           cmd.Parameters.Add("@nombre", MySqlDbType.VarChar,45).Value =nombre;
+           cmd.Parameters.Add("@'tipo", MySqlDbType.VarChar,45).Value =tipo;
+           cmd.Parameters.Add("@fase", MySqlDbType.VarChar,45).Value =fase;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;
+          
        }
 
        public int eliminarDiagnostico(int idDiagnostico){
@@ -757,7 +865,20 @@ namespace SistemaHospital.Datos
 
        public int modificaDiagnostico(int idDiagnostico,string nombre, string tipo, string fase)
        {
-           return 0;
+           string sql = "CALL SPDiagnosticos(@id,@nombre,@tipo,@fase,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = idDiagnostico;
+           cmd.Parameters.Add("@nombre", MySqlDbType.VarChar, 45).Value = nombre;
+           cmd.Parameters.Add("@'tipo", MySqlDbType.VarChar, 45).Value = tipo;
+           cmd.Parameters.Add("@fase", MySqlDbType.VarChar, 45).Value = fase;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;
        }
 
        /*--------------------------------------------------------------------------------------------*/
