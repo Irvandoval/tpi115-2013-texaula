@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#"  EnableEventValidation="false" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="gExamenes.aspx.cs" Inherits="SistemaHospital.Presentacion.Administrador.gExamenes" %>
+﻿<%@ Page Title="" Language="C#"   MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="gExamenes.aspx.cs" Inherits="SistemaHospital.Presentacion.Administrador.gExamenes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent"  runat="server">
 </asp:Content> 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -7,33 +7,47 @@
     <asp:Panel ID="Panel1" runat="server">
         <br />
         <br />
+        <br />
         <asp:GridView ID="GridView1" runat="server" 
     AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" 
-            style="margin-left: 323px" ShowFooter="True">
+            style="margin-left: 295px" ShowFooter="True" 
+            onrowcommand="GridView1_RowCommand" onrowdeleting="GridView1_RowDeleting" 
+            DataKeyNames="idExamen" onrowcancelingedit="GridView1_RowCancelingEdit" 
+            onrowediting="GridView1_RowEditing" onrowupdating="GridView1_RowUpdating1">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:TemplateField HeaderText="ID">
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("idExamen") %>'></asp:Label>
                     </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("idExamen") %>'></asp:TextBox>
-                    </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Nombre">
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("nombre") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtNombre" runat="server" Text='<%# Bind("nombre") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtNombre" runat="server" Width="81px"></asp:TextBox>
-                        <asp:Button ID="Button1" runat="server" BorderColor="#0066FF" Text="+" 
-                            Width="27px" />
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandName="AddNew" 
+                          ForeColor="White">Agregar</asp:LinkButton>
+
                     </FooterTemplate>
+
                 </asp:TemplateField>
-                <asp:CommandField ButtonType="Button" ShowEditButton="True" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" 
+                            CommandName="Edit" Text="Editar"></asp:LinkButton>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" 
+                            CommandName="Update" Text="Actualizar"></asp:LinkButton>
+                        &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
+                            CommandName="Cancel" Text="Cancelar"></asp:LinkButton>
+                    </EditItemTemplate>
+                </asp:TemplateField>
                 <asp:CommandField ShowDeleteButton="True" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
