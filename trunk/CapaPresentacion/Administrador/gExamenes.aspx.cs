@@ -13,6 +13,7 @@ namespace SistemaHospital.Presentacion.Administrador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (!IsPostBack)
             bind();
         }
 
@@ -23,6 +24,11 @@ namespace SistemaHospital.Presentacion.Administrador
             GridView1.DataBind();
 
         }
+
+       
+
+     
+
 
     }
 }
