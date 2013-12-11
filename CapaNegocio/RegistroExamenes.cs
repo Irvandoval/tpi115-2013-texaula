@@ -21,8 +21,7 @@ namespace SistemaHospital.Negocio
             DB nuevoDB = new DB();
             nuevoDB.conectar();
 
-            //aqui va el metodo de la clase DB
-            int res = 0;
+            int res = nuevoDB.addRegistroExamen(this.idExpediente, this.idExamen, this.fecha, this.resultados);
 
             nuevoDB.cerrar();
             return res;
@@ -33,8 +32,7 @@ namespace SistemaHospital.Negocio
             DB nuevoDB = new DB();
             nuevoDB.conectar();
 
-            //aqui va el metodo de la clase DB
-            int res = 0;
+            int res = nuevoDB.eliminaRegistroExamen(this.id);
 
             nuevoDB.cerrar();
             return res;
@@ -45,8 +43,7 @@ namespace SistemaHospital.Negocio
             DB nuevoDB = new DB();
             nuevoDB.conectar();
 
-            //aqui va el metodo de la clase DB
-            int res = 0;
+            int res = nuevoDB.modificaRegistroExamen(this.id, this.idExpediente, this.idExamen, this.fecha, this.resultados);
 
             nuevoDB.cerrar();
             return res;
