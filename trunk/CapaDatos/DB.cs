@@ -675,7 +675,7 @@ namespace SistemaHospital.Datos
            cmd.Parameters.Add("@fechaNacimeinto", MySqlDbType.Date).Value = fechaNac;
            cmd.Parameters.Add("@seguro", MySqlDbType.VarChar, 45).Value = seguro;
            cmd.Parameters.Add("@sexo", MySqlDbType.VarChar, 10).Value = sexo;
-           cmd.Parameters.Add("@direccion", MySqlDbType.VarChar, 45).Value = direccion;
+           cmd.Parameters.Add("@direccion", MySqlDbType.VarChar, 100).Value = direccion;
            cmd.Parameters.Add("@telefono", MySqlDbType.VarChar, 15).Value = telefono;
            cmd.Parameters.Add("@estado", MySqlDbType.VarChar, 10).Value = estado;
            MySqlDataReader res = cmd.ExecuteReader();
@@ -738,7 +738,7 @@ namespace SistemaHospital.Datos
            cmd.Parameters.Add("@fechaNacimeinto", MySqlDbType.Date).Value = fechaNac;
            cmd.Parameters.Add("@seguro", MySqlDbType.VarChar, 45).Value = seguro;
            cmd.Parameters.Add("@sexo", MySqlDbType.VarChar, 10).Value = sexo;
-           cmd.Parameters.Add("@direccion", MySqlDbType.VarChar, 45).Value = direccion;
+           cmd.Parameters.Add("@direccion", MySqlDbType.VarChar, 100).Value = direccion;
            cmd.Parameters.Add("@telefono", MySqlDbType.VarChar, 15).Value = telefono;
            cmd.Parameters.Add("@estado", MySqlDbType.VarChar, 10).Value = estado;
            MySqlDataReader res = cmd.ExecuteReader();
@@ -826,11 +826,31 @@ namespace SistemaHospital.Datos
 
        public int agregarUrgencia(int idExpediente,string medicoDui,string enfermeraDui,string fechaEmergencia)
        {
-           return 0;
+           string sql = "call SPUrgencia(null,@idExpediente,@medico_dui,@enfermera_dui,@fecha,1)";
+          
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idExpediente", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@medico_dui", MySqlDbType.VarChar,10).Value = medicoDui;
+           cmd.Parameters.Add("@enfermera_dui", MySqlDbType.VarChar,10).Value = enfermeraDui;
+           cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = fechaEmergencia;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val; 
+
        }
 
        public int eliminaUrgencia(int idUrgencia)
        {
+
+           string sql = "call SPUrgencia(@idUrgencia,null,null,null,null,3)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idExpediente", MySqlDbType.Int32).Value = idUrgencia;
+
            return 0;
        }
 
