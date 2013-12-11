@@ -318,7 +318,7 @@ namespace SistemaHospital.Datos
 
        public int eliminaRecepcionsta(string dui)
        {
-           string sql = "CALL SPRecepcionistas(@dui,null,null,null,3)";
+           string sql = "CALL SPRecepcionistas(@dui,null,null,null,null,3)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@dui", MySqlDbType.VarChar, 10).Value = dui;
            MySqlDataReader res = cmd.ExecuteReader();

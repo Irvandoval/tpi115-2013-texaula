@@ -13,7 +13,7 @@ namespace SistemaHospital.Presentacion.Administrador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
+            if (!IsPostBack)
             bind();
         }
 
@@ -25,10 +25,21 @@ namespace SistemaHospital.Presentacion.Administrador
 
         }
 
-       
+        protected void GridView1_RowCommand( object source,DataGridCommandEventArgs e)
+        {
+           
+            if (e.CommandName=="AddNew")
+            {
+                Response.Write("Hola");
+            }
+        }
+        protected void GridView1_EditCommand(object source, DataGridCommandEventArgs e)
+        {
 
-     
-
-
+            if (e.CommandName == "AddNew")
+            {
+                Response.Write("Hola");
+            }
+        }
     }
 }
