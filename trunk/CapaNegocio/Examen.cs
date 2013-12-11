@@ -11,7 +11,19 @@ namespace SistemaHospital.Negocio
     public class Examen
     {
         private int idExamen;
+
+        public int IdExamen
+        {
+            get { return idExamen; }
+            set { idExamen = value; }
+        }
         private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
 
      public Examen(int idExamen, String nombre)
         {

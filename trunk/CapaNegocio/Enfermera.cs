@@ -12,9 +12,33 @@ namespace SistemaHospital.Negocio
     public class Enfermera
     {
         private string dui;
+
+        public string Dui
+        {
+            get { return dui; }
+            set { dui = value; }
+        }
         private string nombres;
+
+        public string Nombres
+        {
+            get { return nombres; }
+            set { nombres = value; }
+        }
         private string apellidos;
+
+        public string Apellidos
+        {
+            get { return apellidos; }
+            set { apellidos = value; }
+        }
         private string fechaNac;
+
+        public string FechaNac
+        {
+            get { return fechaNac; }
+            set { fechaNac = value; }
+        }
 
 
         public Enfermera(string dui,string nombres, string apellidos, string fechaNac)

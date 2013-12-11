@@ -18,7 +18,7 @@ namespace SistemaHospital.Presentacion
         protected void Button1_Click(object sender, EventArgs e)
         {
             Usuario n = new Usuario(TextBox1.Text, TextBox2.Text);
-            n.tipoUsuario = TextBox3.Text;
+            n.TipoUsuario = TextBox3.Text;
            int r= n.agregaUsuario();
            if (r == 1) Response.Write("Se introdujo correctamente");
            else Response.Write("error");

@@ -11,10 +11,40 @@ namespace SistemaHospital.Negocio
     public class Recepcionist
     {
         private string dui;
+
+        public string Dui
+        {
+            get { return dui; }
+            set { dui = value; }
+        }
         private int idUsuario;
+
+        public int IdUsuario
+        {
+            get { return idUsuario; }
+            set { idUsuario = value; }
+        }
         private string nombres;
+
+        public string Nombres
+        {
+            get { return nombres; }
+            set { nombres = value; }
+        }
         private string apellidos;
+
+        public string Apellidos
+        {
+            get { return apellidos; }
+            set { apellidos = value; }
+        }
         private string fechaNac;
+
+        public string FechaNac
+        {
+            get { return fechaNac; }
+            set { fechaNac = value; }
+        }
 
         public int agregarRecepcionista()
         {

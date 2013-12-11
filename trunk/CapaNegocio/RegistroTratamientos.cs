@@ -11,9 +11,33 @@ namespace SistemaHospital.Negocio
     public class RegistroTratamientos
     {
         private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         private int idExpediente;
+
+        public int IdExpediente
+        {
+            get { return idExpediente; }
+            set { idExpediente = value; }
+        }
         private int idTratamiento;
+
+        public int IdTratamiento
+        {
+            get { return idTratamiento; }
+            set { idTratamiento = value; }
+        }
         private String fecha;
+
+        public String Fecha
+        {
+            get { return fecha; }
+            set { fecha = value; }
+        }
 
         public int agregarRegistroTratamiento()
         {
@@ -58,7 +82,7 @@ namespace SistemaHospital.Negocio
             DB nuevoDB = new DB();
             nuevoDB.conectar();
 
-            //modificar metodo de nuevoBD para obtener registro de examenes
+            //modificar metodo de nuevoBD para obtener registro de tratamientos
             DataTable tabRegistroTratamiento = nuevoDB.listaMedicos();
 
             nuevoDB.cerrar();
