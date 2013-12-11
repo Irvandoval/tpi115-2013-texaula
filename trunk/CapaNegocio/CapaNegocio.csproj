@@ -53,6 +53,8 @@
     <Compile Include="Medico.cs" />
     <Compile Include="Paciente.cs" />
     <Compile Include="Recepcionist.cs" />
+    <Compile Include="RegistroExamenes.cs" />
+    <Compile Include="RegistroTratamientos.cs" />
     <Compile Include="Tratamiento.cs" />
     <Compile Include="Urgencia.cs" />
     <Compile Include="Usuario.cs" />
