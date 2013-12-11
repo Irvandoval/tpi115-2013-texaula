@@ -852,7 +852,7 @@ namespace SistemaHospital.Datos
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = iddiag;
            cmd.Parameters.Add("@nombre", MySqlDbType.VarChar,45).Value =nombre;
-           cmd.Parameters.Add("@'tipo", MySqlDbType.VarChar,45).Value =tipo;
+           cmd.Parameters.Add("@tipo", MySqlDbType.VarChar,45).Value =tipo;
            cmd.Parameters.Add("@fase", MySqlDbType.VarChar,45).Value =fase;
            MySqlDataReader res = cmd.ExecuteReader();
            int val = 0;
@@ -894,7 +894,7 @@ namespace SistemaHospital.Datos
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = idDiagnostico;
            cmd.Parameters.Add("@nombre", MySqlDbType.VarChar, 45).Value = nombre;
-           cmd.Parameters.Add("@'tipo", MySqlDbType.VarChar, 45).Value = tipo;
+           cmd.Parameters.Add("@tipo", MySqlDbType.VarChar, 45).Value = tipo;
            cmd.Parameters.Add("@fase", MySqlDbType.VarChar, 45).Value = fase;
            MySqlDataReader res = cmd.ExecuteReader();
            int val = 0;
@@ -906,7 +906,113 @@ namespace SistemaHospital.Datos
            return val;
        }
 
-       /*--------------------------------------------------------------------------------------------*/
+       /*-------------------------------------RegistrodeExamenes-------------------------------------------------------*/
+       public int addRegistroExamen(int idExpediente, int idExamen,String fecha,string resultados)
+       {
+           string sql = "call SPExpedienteExamen(null,@idExpediente,@idExamen,@fecha,@resultados,1)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idExpediente", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@idExamen", MySqlDbType.Int32, 45).Value = idExamen;
+           cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = fecha;
+           cmd.Parameters.Add("@resultados", MySqlDbType.VarChar, 100).Value =resultados;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;
+       }
+
+       public int eliminaRegistroExamen(int idReg)
+       {
+
+           string sql = "call SPExpedienteExamen(@idReg,null,null,null,null,3)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idReg", MySqlDbType.Int32).Value = idReg;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;
+       }
+
+       public int modificaRegistroExamen(int idReg,int idExpediente, int idExamen, String fecha, string resultados)
+       {
+           string sql = "call SPExpedienteExamen(@idReg,@idExpediente,@idExamen,@fecha,@resultados,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idExpediente", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@idExamen", MySqlDbType.Int32, 45).Value = idExamen;
+           cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = fecha;
+           cmd.Parameters.Add("@resultados", MySqlDbType.VarChar, 100).Value = resultados;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;
+       }
+
+       /*---------------------------------------------------registroTratamientos-------------------------------------------*/
+       public int addRegistroTratamiento( int idExpediente,int idTratamiento,string fecha)
+       {
+           string sql = "call SPExpediente(null,@idExpediente,@idTratamiento,@fecha,1)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idExpediente", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@idTratamiento", MySqlDbType.Int32, 45).Value = idTratamiento;
+           cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = fecha;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;
+
+       }
+
+       public int eliminaRegistroTratamiento(int idReg)
+       {
+
+           string sql = "call SPExpediente(@idReg,null,null,null,3)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idReg", MySqlDbType.Int32).Value = idReg;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;
+       }
+
+       public int modificaRegistroTratamiento(int idReg,int idExpediente, int idTratamiento, string fecha)
+       {
+           string sql = "call SPExpediente(@idReg,@idExpediente,@idTratamiento,@fecha,2)";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           cmd.Parameters.Add("@idReg", MySqlDbType.Int32).Value = idReg;
+           cmd.Parameters.Add("@idExpediente", MySqlDbType.Int32).Value = idExpediente;
+           cmd.Parameters.Add("@idTratamiento", MySqlDbType.Int32, 45).Value = idTratamiento;
+           cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = fecha;
+           MySqlDataReader res = cmd.ExecuteReader();
+           int val = 0;
+           if (res.Read())
+           {
+               val = res.GetInt32(0);
+           }
+
+           return val;
+
+       }
+       /*-----------------------------------------------------------------------------------------------------------*/
 
     }
 }
