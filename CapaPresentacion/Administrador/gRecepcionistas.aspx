@@ -10,14 +10,67 @@
         <br />
         <br />
         <asp:GridView ID="tRecepcionistas" runat="server" AutoGenerateColumns="False" 
-            CellPadding="4" ForeColor="#333333" GridLines="None" style="margin-left: 183px">
+            CellPadding="4" ForeColor="#333333" GridLines="None" 
+            style="margin-left: 43px" ShowFooter="True">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:BoundField DataField="dui" HeaderText="DUI" />
-                <asp:BoundField DataField="idUsuario" HeaderText="IDUSUARIO" />
-                <asp:BoundField DataField="nombres" HeaderText="Nombres" />
-                <asp:BoundField DataField="apellidos" HeaderText="Apellidos" />
-                <asp:BoundField DataField="fechaNacimiento" HeaderText="Fecha Nacimiento" />
+                <asp:TemplateField HeaderText="DUI">
+                    <FooterTemplate>
+                        <asp:TextBox ID="txtDui" runat="server"></asp:TextBox>
+                    </FooterTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("dui") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("dui") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="IDUSUARIO">
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("idUsuario") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("idUsuario") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="TxtIDUser" runat="server" Width="52px"></asp:TextBox>
+                    </FooterTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Nombres">
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("nombres") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("nombres") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="txtNombres" runat="server"></asp:TextBox>
+                    </FooterTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Apellidos">
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("apellidos") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("apellidos") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="txtApellidos" runat="server"></asp:TextBox>
+                    </FooterTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Fecha Nacimiento">
+                    <FooterTemplate>
+                        <asp:TextBox ID="txtFechaNac" runat="server" Width="59px"></asp:TextBox>
+                        <asp:Button ID="Button1" runat="server" BorderColor="Blue" Text="+" 
+                            Width="34px" />
+                    </FooterTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("fechaNacimiento") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("fechaNacimiento") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
                 <asp:CommandField ButtonType="Button" ShowEditButton="True" />
                 <asp:CommandField ShowDeleteButton="True" />
             </Columns>
