@@ -12,9 +12,33 @@ namespace SistemaHospital.Negocio
     public class Usuario
     {
         private string userName;
+
+        public string UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
         private string pass;
-        public string tipoUsuario;
-        public int idusuario;
+
+        public string Pass
+        {
+            get { return pass; }
+            set { pass = value; }
+        }
+        private string tipoUsuario;
+
+        public string TipoUsuario
+        {
+            get { return tipoUsuario; }
+            set { tipoUsuario = value; }
+        }
+        private int idusuario;
+
+        public int Idusuario
+        {
+            get { return idusuario; }
+            set { idusuario = value; }
+        }
 
         public Usuario() { }
         public Usuario(string username, string pass)

@@ -11,9 +11,33 @@ namespace SistemaHospital.Negocio
     public class Diagnostico
     {
         private int idDiagnostico;
+
+        public int IdDiagnostico
+        {
+            get { return idDiagnostico; }
+            set { idDiagnostico = value; }
+        }
         private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
         private string tipo;
+
+        public string Tipo
+        {
+            get { return tipo; }
+            set { tipo = value; }
+        }
         private string fase;
+
+        public string Fase
+        {
+            get { return fase; }
+            set { fase = value; }
+        }
 
         public int agregarDiagnostico()
         {

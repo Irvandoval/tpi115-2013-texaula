@@ -10,10 +10,40 @@ namespace SistemaHospital.Negocio
     public class Consulta
     {
         private int idConsulta;
+
+        public int IdConsulta
+        {
+            get { return idConsulta; }
+            set { idConsulta = value; }
+        }
         private int idExpediente;
+
+        public int IdExpediente
+        {
+            get { return idExpediente; }
+            set { idExpediente = value; }
+        }
         private string medico_dui;
+
+        public string Medico_dui
+        {
+            get { return medico_dui; }
+            set { medico_dui = value; }
+        }
         private string fechaConsulta;
+
+        public string FechaConsulta
+        {
+            get { return fechaConsulta; }
+            set { fechaConsulta = value; }
+        }
         private string motivoConsulta;
+
+        public string MotivoConsulta
+        {
+            get { return motivoConsulta; }
+            set { motivoConsulta = value; }
+        }
 
         public int agregarConsulta()
         {

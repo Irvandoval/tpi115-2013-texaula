@@ -11,7 +11,19 @@ namespace SistemaHospital.Negocio
     public class Tratamiento
     {
         private int idTratamiento;
+
+        public int IdTratamiento
+        {
+            get { return idTratamiento; }
+            set { idTratamiento = value; }
+        }
         private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
 
 
         public Tratamiento(string nombre)
