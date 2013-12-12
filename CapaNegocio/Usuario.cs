@@ -17,6 +17,7 @@ namespace SistemaHospital.Negocio
         {
             get { return userName; }
             set { userName = value; }
+
         }
         private string pass;
 
@@ -126,6 +127,16 @@ namespace SistemaHospital.Negocio
             nuevo.cerrar();
             return obt;
 
+        }
+
+
+        public int eliminaUsuario()
+        {
+            DB nuevoDB = new DB();
+            nuevoDB.conectar();
+            int res = nuevoDB.eliminaUsuario(this.idusuario);
+            nuevoDB.cerrar();
+            return res;
         }
 
     }
