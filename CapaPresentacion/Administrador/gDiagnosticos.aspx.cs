@@ -24,5 +24,10 @@ namespace SistemaHospital.Presentacion.Administrador
             GridView1.DataBind();
              
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

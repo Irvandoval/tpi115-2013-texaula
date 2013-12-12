@@ -32,7 +32,8 @@ namespace CapaPresentacion.Account
                // Response.Write(HttpContext.Current.User.Identity.Name);
               string nn=nuevo.getTipoUsuario();
                Response.Write(nn);
-                
+               Session["Tipo"] = nuevo.getTipoUsuario();
+
             }
             else
             {
@@ -52,7 +53,7 @@ namespace CapaPresentacion.Account
         protected void LoginButton_Click(object sender, EventArgs e)
         {
 
-           /* MySqlConnection conexion = new MySqlConnection("data source=localhost;user=root;password=;database=sistemahospital");
+            MySqlConnection conexion = new MySqlConnection("data source=localhost;user=root;password=;database=sistemahospital");
             conexion.Open();
             MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) from my_aspnet_users Where ", conexion);
             Response.Write("hola");
@@ -60,17 +61,28 @@ namespace CapaPresentacion.Account
 
             string uName = LoginUser.UserName;
             string pass = LoginUser.Password;
+         
             Usuario nuevoUser= new Usuario(uName,pass);
-           
+
+            string compare = nuevoUser.getTipoUsuario();
+
+            
              bool res= nuevoUser.login();
+
 
              if (res )
              {
-
+                 if (compare.CompareTo("ADMIN") == 0)
+                     Response.Write(compare);
+                 //    Response.Redirect("../Administrador/menuppal.aspx");
+                 else
+                     Response.Write(compare);
+                //     Response.Redirect("../Default.aspx");      
                
-                 Response.Redirect("../Default.aspx");
+                // Response.Redirect("../Default.aspx");
+             //    Response.Redirect("google.com");
                
-             }*/
+             }
 
              
         }
