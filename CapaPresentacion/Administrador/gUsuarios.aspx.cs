@@ -61,7 +61,9 @@ namespace SistemaHospital.Presentacion.Administrador
      protected void tUsuarios_RowDeleting(object sender, GridViewDeleteEventArgs e)
      {
          GridViewRow row = tUsuarios.SelectedRow;
-         Usuario nuevo = new Usuario(Convert.ToString(tUsuarios.DataKeys[e.RowIndex].Values[0]), "");
+         //Usuario nuevo = new Usuario(Convert.ToString(tUsuarios.DataKeys[e.RowIndex].Values[0]), "");
+         Usuario nuevo = new Usuario();
+         nuevo.Idusuario = Convert.ToInt32(tUsuarios.DataKeys[e.RowIndex].Values[0]);
          nuevo.eliminaUsuario();
          // Response.Write(Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]));
          bind();
