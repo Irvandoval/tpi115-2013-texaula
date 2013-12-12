@@ -24,6 +24,9 @@ namespace CapaPresentacion
         protected void HeadLoginStatus_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Usuario.registrarLogout();
+            Session.Abandon();
+
+
             
         }
     }
