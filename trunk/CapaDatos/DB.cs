@@ -101,14 +101,29 @@ namespace SistemaHospital.Datos
 
        }
 
+       public string getTipoUsuario(string user)
+       {
+           String sql = "select  tipo  from usuarios where userName='" + user + "'";
+           MySqlCommand cmd = new MySqlCommand(sql, conexion);
+           MySqlDataReader res = cmd.ExecuteReader();
+           string tipo = "";
+           if (res.Read())
+           {
+               tipo= res.GetString(0);
+           }
+           
+           return tipo;
+
+       }
+
 
         
-       public int eliminaUsuario(string user)
+       public int eliminaUsuario(int idUsuario)
        {
-           int iduser = getIdUsuario(user);
-           String sql = "CALL SPUsuarios(null,@user,null,null,null,3)";
+           
+           String sql = "CALL SPUsuarios(@idUser,null,null,null,null,3)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
-           cmd.Parameters.Add("@user", MySqlDbType.VarChar, 10).Value = user;
+           cmd.Parameters.Add("@idUser", MySqlDbType.Int32).Value = idUsuario;
           
            MySqlDataReader res = cmd.ExecuteReader();
            if (res.Read())
@@ -147,7 +162,7 @@ namespace SistemaHospital.Datos
        }
 
 
-       public String getTipoUsuario(string username)
+      /* public String getTipoUsuario(string username)
        {
            DataTable tipoUsuario= new DataTable("usuario");
            string tu = "";
@@ -169,7 +184,7 @@ namespace SistemaHospital.Datos
            return "jj";
 
 
-       }
+       }*/
 
        public DataTable listaUsuarios()
        { DataTable tabla = new DataTable("Usuarios");

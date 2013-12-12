@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="gUsuarios.aspx.cs" Inherits="SistemaHospital.Presentacion.Administrador.gUsuarios" %>
+﻿<%@ Page Title="" Language="C#" Page EnableEventValidation="false"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="gUsuarios.aspx.cs" Inherits="SistemaHospital.Presentacion.Administrador.gUsuarios" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -9,7 +9,9 @@
     <asp:GridView ID="tUsuarios" runat="server" AutoGenerateColumns="False" 
         CellPadding="4" ForeColor="#333333" GridLines="None" 
         onselectedindexchanged="GridView1_SelectedIndexChanged" 
-        style="margin-left: 119px" Height="180px" ShowFooter="True">
+        style="margin-left: 119px" Height="180px" ShowFooter="True" 
+        DataKeyNames="idUsuario" onrowcommand="tUsuarios_RowCommand" 
+        onrowdeleting="tUsuarios_RowDeleting">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:TemplateField HeaderText="ID">
@@ -44,7 +46,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Tipo">
                 <FooterTemplate>
-                    <asp:DropDownList ID="DropDownList1" runat="server">
+                    <asp:DropDownList ID="txtTipo" runat="server">
                         <asp:ListItem>MEDICO</asp:ListItem>
                         <asp:ListItem>RECEP</asp:ListItem>
                         <asp:ListItem>ADMIN</asp:ListItem>
@@ -59,12 +61,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Estado" SortExpression="estado">
                 <FooterTemplate>
-                    <asp:DropDownList ID="DropDownList2" runat="server">
+                    <asp:DropDownList ID="txtEstado" runat="server">
                         <asp:ListItem>ALTA</asp:ListItem>
                         <asp:ListItem>BAJA</asp:ListItem>
                     </asp:DropDownList>
                     <asp:Button ID="Button1" runat="server" BorderColor="#3399FF" 
-                        style="margin-left: 4px" Text="+" />
+                        style="margin-left: 4px" Text="+" CommandName="AddNew" />
                 </FooterTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("estado") %>'></asp:Label>
@@ -73,7 +75,18 @@
                     <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("estado") %>'></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:CommandField ButtonType="Button" ShowEditButton="True" />
+            <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:Button ID="Button1" runat="server" CausesValidation="False" 
+                        CommandName="Edit" Text="Editar" />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:Button ID="Button1" runat="server" CausesValidation="True" 
+                        CommandName="Update" Text="Actualizar" />
+                    &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" 
+                        CommandName="Cancel" Text="Cancelar" />
+                </EditItemTemplate>
+            </asp:TemplateField>
             <asp:CommandField ShowDeleteButton="True" />
         </Columns>
         <EditRowStyle BackColor="#999999" />
