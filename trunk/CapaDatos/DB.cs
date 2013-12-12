@@ -153,7 +153,7 @@ namespace SistemaHospital.Datos
            string sql = "CALL SPRegUserLogs(null,2)";
            MySqlCommand cmd = new MySqlCommand(sql, conexion);
            MySqlDataReader res = cmd.ExecuteReader();
-           if (res.Read())
+           if (res.Read()!=null)
            {
                return res.GetInt32(0);
            }
@@ -196,7 +196,14 @@ namespace SistemaHospital.Datos
                String sql = "call SPUsuarios(null,null,null,null,null,4)";
                MySqlCommand cmd = new MySqlCommand(sql, conexion);
                MySqlDataAdapter returnVal = new MySqlDataAdapter(sql, conexion);
-               returnVal.Fill(tabla);
+               try
+               {
+                   returnVal.Fill(tabla);
+               }
+               catch (Exception e) { 
+
+               
+               }
              
            }
            else{
@@ -403,7 +410,7 @@ namespace SistemaHospital.Datos
            }
            return 0;
      }
-
+ 
        public int eliminaEnfermera(string dui)
        {
            string sql = "CALL SPEnfermeras(@dui,null,null,null,3)";

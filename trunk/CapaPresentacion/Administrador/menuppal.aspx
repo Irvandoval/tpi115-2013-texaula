@@ -17,7 +17,8 @@
             <asp:Menu ID="Menu1" runat="server" BackColor="White" 
                 DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" 
                 ForeColor="#284E98" StaticSubMenuIndent="10px" 
-                style="font-size: large; text-align: left">
+                style="font-size: large; text-align: left" 
+                onmenuitemclick="Menu1_MenuItemClick">
                 <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
                 <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
                 <DynamicMenuStyle BackColor="#B5C7DE" />
